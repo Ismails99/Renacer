@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#fbfbfa">
 <title>Renacer – Hjemmesider til små virksomheder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;900&family=Libre+Caslon+Text:wght@400;700&family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fbfbfa;--soft:#f2f1ee;--ink:#121212;--muted:#6f6c67;--line:#e4e2dd;--acc:#a8854a}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -187,6 +187,18 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 }
 @media (prefers-reduced-motion:reduce){.pf-tab.on .bar b{animation:none;transform:scaleX(1)}.pf-scene *{transition:none!important}}
 
+/* DICTIONARY */
+.dict{background:#fff;padding:150px 0 160px}
+.dict .box{max-width:860px;margin:0 auto}
+.dict .word{font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(84px,15vw,200px);line-height:.9;letter-spacing:-.01em;color:#0d0b0b;padding-bottom:14px}
+.dict hr{border:0;border-top:1px solid #0d0b0b;margin:0}
+.dict .def{display:grid;grid-template-columns:1fr auto;gap:40px;margin-top:34px;align-items:start}
+.dict .def p{font-family:"Libre Caslon Text",Georgia,serif;font-size:21px;line-height:1.55;color:#141111;max-width:440px}
+.dict .def small{display:block;font:400 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.dict .pron{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;font-size:36px;color:#0d0b0b;display:flex;align-items:center;gap:14px;white-space:nowrap}
+.dict .pron i{font-style:normal;font-weight:300;font-family:Inter,sans-serif;font-size:64px;line-height:.8;color:#0d0b0b;transform:scaleX(.7)}
+@media (max-width:900px){.dict{padding:90px 0}.dict .def{grid-template-columns:1fr;gap:20px}.dict .def p{font-size:18px}.dict .pron{font-size:26px}.dict .pron i{font-size:44px}}
+
 /* STATEMENT */
 .statement{background:var(--ink);color:var(--bg);border:0}
 .statement .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:80px;align-items:end}
@@ -288,6 +300,15 @@ footer .wordmark{font-size:17px;color:var(--ink)}
   <span class="tag">Udkast 2026</span>
  </div>
 </div></header>
+
+<section class="dict" aria-label="Hvad betyder renacer"><div class="wrap"><div class="box">
+ <div class="word">renacer</div>
+ <hr>
+ <div class="def">
+  <p><small>Spansk · verbum</small>at blive genfødt; at rejse sig igen med nyt liv og ny styrke, når noget gammelt bliver til noget nyt.</p>
+  <div class="pron"><i>[</i>re-na-sér<i>]</i></div>
+ </div>
+</div></div></section>
 
 <section id="proces"><div class="wrap">
  <div class="head">
@@ -451,9 +472,9 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 </div></section>
 
 <section class="about" id="om"><div class="wrap">
- <div><div class="label"><i>●</i> Om Renacer · Hvorfor mig?</div><h2 style="margin-top:20px">Renacer er spansk for <em>at blive genfødt.</em></h2></div>
+ <div><div class="label"><i>●</i> Om Renacer · Hvorfor mig?</div><h2 style="margin-top:20px">En person, <em>ikke en platform.</em></h2></div>
  <div>
-  <p>Det er præcis, hvad jeg gør for små virksomheder: Jeg tager en forældet eller manglende hjemmeside og giver den nyt liv, så den arbejder for dig i stedet for imod dig.</p>
+  <p>Navnet siger det hele. Jeg tager en forældet eller manglende hjemmeside og giver den nyt liv, så den arbejder for dig i stedet for imod dig.</p>
   <p>Du får ikke en platform eller et callcenter. Du får én person, der kender din forretning.</p>
   <div class="why">
    <div><b>Fokus på salg</b><span>Bygget til at skaffe kunder</span></div>
