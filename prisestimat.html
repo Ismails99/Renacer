@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbfbfa">
+<title>Få et prisestimat – Renacer</title>
+<meta name="description" content="Svar på fem korte spørgsmål om din nye hjemmeside, så vender jeg tilbage med et prisestimat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfa;--soft:#f2f1ee;--ink:#121212;--muted:#6f6c67;--line:#e4e2dd;--acc:#a8854a}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{font-family:Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:980px;margin:0 auto;padding:0 40px;width:100%}
+nav .wrap{max-width:1240px;display:flex;justify-content:space-between;align-items:center;height:84px}
+.wordmark{font-family:Italiana,Georgia,serif;letter-spacing:.32em;font-size:22px}
+.back-home{font-size:14px;font-weight:500}
+main{flex:1;padding:60px 0 100px}
+.top{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
+.top b{color:var(--acc);font-weight:500}
+.progress{height:2px;background:var(--line);position:relative;margin-bottom:70px}
+.progress i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transition:width .45s ease}
+.step{display:none;animation:in .45s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.q{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:52px;line-height:1.05;letter-spacing:-.035em;max-width:760px}
+.hint{color:var(--muted);margin:16px 0 44px;font-size:16px}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.opts.three{grid-template-columns:repeat(3,1fr)}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .c{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:#fff;border-radius:10px;padding:22px 22px 24px;transition:border-color .2s,box-shadow .2s,background .2s;height:100%}
+.opt .c:hover{border-color:#bdb9b1}
+.opt .box{flex:none;width:20px;height:20px;border:1px solid #bdb9b1;border-radius:50%;margin-top:2px;display:grid;place-items:center;transition:all .2s}
+.opt input[type=checkbox]+.c .box{border-radius:5px}
+.opt .box:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--bg);opacity:0;transition:opacity .2s}
+.opt input[type=checkbox]+.c .box:after{content:"✓";width:auto;height:auto;background:none;color:var(--bg);font-size:12px;line-height:1}
+.opt input:checked+.c{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.opt input:checked+.c .box{background:var(--ink);border-color:var(--ink)}
+.opt input:checked+.c .box:after{opacity:1}
+.opt input:focus-visible+.c{outline:2px solid var(--acc);outline-offset:2px}
+.opt b{display:block;font-family:"Inter Tight",sans-serif;font-weight:500;font-size:19px;letter-spacing:-.01em;line-height:1.25}
+.opt span.d{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.field{display:block;margin-top:16px}
+.field span{display:block;font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.field input,.field textarea{width:100%;font:inherit;font-size:16px;padding:15px 16px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field textarea{min-height:120px;resize:vertical}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.btn{font:500 15px Inter,sans-serif;border-radius:30px;padding:15px 30px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--bg);transition:opacity .2s}
+.btn[disabled]{opacity:.25;cursor:not-allowed}
+.btn.ghost{background:none;color:var(--ink);border-color:transparent;padding-left:0}
+.btn.ghost:before{content:"← "}
+.err{color:#a3361f;font-size:14px;margin-top:14px;min-height:20px}
+.summary{border-top:1px solid var(--line);margin-top:10px}
+.summary div{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.summary dt{color:var(--muted)}
+.done{text-align:left}
+.done .q em{font-family:Italiana,serif;font-style:normal;color:var(--acc);font-weight:400}
+.done p{color:var(--muted);max-width:560px;margin-top:20px;font-size:17px}
+.done .btn{display:inline-block;margin-top:36px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:13px;color:var(--muted)}
+footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
+@media (max-width:760px){
+ .wrap{padding:0 20px}main{padding:30px 0 70px}
+ .q{font-size:34px}.hint{margin-bottom:30px}
+ .opts,.opts.three,.grid2{grid-template-columns:1fr}
+ .progress{margin-bottom:44px}
+ .summary div{grid-template-columns:1fr;gap:2px}
+ footer .wrap{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="wordmark" href="/">RENACER</a><a class="back-home" href="/">← Til forsiden</a></div></nav>
+
+<main><div class="wrap">
+ <div class="top"><span><b id="stepNo">01</b> / 06 · Få et prisestimat</span><span id="stepName">Udgangspunkt</span></div>
+ <div class="progress"><i id="bar" style="width:16.6%"></i></div>
+
+ <form id="f" novalidate>
+  <!-- 1 -->
+  <section class="step on" data-name="Udgangspunkt">
+   <h1 class="q">Hvad skal vi lave?</h1>
+   <p class="hint">Svar på seks korte spørgsmål, så vender jeg tilbage med et prisestimat. Det er gratis og uforpligtende.</p>
+   <div class="opts">
+    <label class="opt"><input type="radio" name="Udgangspunkt" value="Ny hjemmeside"><span class="c"><i class="box"></i><span><b>En ny hjemmeside</b><span class="d">Jeg har ingen hjemmeside i dag</span></span></span></label>
+    <label class="opt"><input type="radio" name="Udgangspunkt" value="Forny nuværende hjemmeside"><span class="c"><i class="box"></i><span><b>Forny min hjemmeside</b><span class="d">Jeg har en side, men den trænger til et løft</span></span></span></label>
+   </div>
+   <label class="field" id="urlField" hidden><span>Din nuværende hjemmeside (valgfrit)</span><input type="text" name="Nuværende side" placeholder="fx dinvirksomhed.dk"></label>
+  </section>
+
+  <!-- 2 -->
+  <section class="step" data-name="Størrelse">
+   <h2 class="q">Hvor stor skal siden være?</h2>
+   <p class="hint">Et cirka-tal er fint. Vi finder ud af det præcise sammen.</p>
+   <div class="opts">
+    <label class="opt"><input type="radio" name="Størrelse" value="Én side (onepager)"><span class="c"><i class="box"></i><span><b>Én side</b><span class="d">Alt samlet på én lang side</span></span></span></label>
+    <label class="opt"><input type="radio" name="Størrelse" value="Op til 5 sider"><span class="c"><i class="box"></i><span><b>Op til 5 sider</b><span class="d">Fx forside, ydelser, om, priser, kontakt</span></span></span></label>
+    <label class="opt"><input type="radio" name="Størrelse" value="6 til 10 sider"><span class="c"><i class="box"></i><span><b>6 til 10 sider</b><span class="d">Flere ydelser eller undersider</span></span></span></label>
+    <label class="opt"><input type="radio" name="Størrelse" value="Ved ikke endnu"><span class="c"><i class="box"></i><span><b>Ved ikke endnu</b><span class="d">Det hjælper jeg dig med</span></span></span></label>
+   </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="step" data-name="Funktioner">
+   <h2 class="q">Hvad skal siden kunne?</h2>
+   <p class="hint">Vælg alt, der passer. Du kan også springe over.</p>
+   <div class="opts three">
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Kontaktformular"><span class="c"><i class="box"></i><span><b>Kontaktformular</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Online booking"><span class="c"><i class="box"></i><span><b>Online booking</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Google Maps"><span class="c"><i class="box"></i><span><b>Google Maps</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Anmeldelser"><span class="c"><i class="box"></i><span><b>Anmeldelser</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Galleri"><span class="c"><i class="box"></i><span><b>Billedgalleri</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Blog / nyheder"><span class="c"><i class="box"></i><span><b>Blog eller nyheder</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Flere sprog"><span class="c"><i class="box"></i><span><b>Flere sprog</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Nyhedsbrev"><span class="c"><i class="box"></i><span><b>Nyhedsbrev</b></span></span></label>
+    <label class="opt"><input type="checkbox" name="Funktioner" value="Synlighed på Google (SEO)"><span class="c"><i class="box"></i><span><b>Synlighed på Google</b></span></span></label>
+   </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="step" data-name="Indhold">
+   <h2 class="q">Har du tekster og billeder?</h2>
+   <p class="hint">Mange har ikke, og det er helt i orden.</p>
+   <div class="opts">
+    <label class="opt"><input type="radio" name="Indhold" value="Har selv tekst og billeder"><span class="c"><i class="box"></i><span><b>Ja, jeg har det hele</b><span class="d">Jeg sender tekster og billeder</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Har billeder, mangler tekster"><span class="c"><i class="box"></i><span><b>Jeg mangler tekster</b><span class="d">Jeg har billeder, men vil gerne have hjælp til teksterne</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Har tekster, mangler billeder"><span class="c"><i class="box"></i><span><b>Jeg mangler billeder</b><span class="d">Teksterne er på plads</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Mangler både tekst og billeder"><span class="c"><i class="box"></i><span><b>Jeg mangler begge dele</b><span class="d">Hjælp mig fra bunden</span></span></span></label>
+   </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="step" data-name="Efter lancering">
+   <h2 class="q">Hvem skal passe siden bagefter?</h2>
+   <p class="hint">Du kan altid skifte senere.</p>
+   <div class="opts three">
+    <label class="opt"><input type="radio" name="Efter lancering" value="Jeg passer den selv"><span class="c"><i class="box"></i><span><b>Jeg passer den selv</b><span class="d">Du får nøglerne og styrer den i WordPress</span></span></span></label>
+    <label class="opt"><input type="radio" name="Efter lancering" value="Ændringer efter behov"><span class="c"><i class="box"></i><span><b>Hjælp efter behov</b><span class="d">Jeg skriver, når der er noget</span></span></span></label>
+    <label class="opt"><input type="radio" name="Efter lancering" value="Fast ordning med hosting og support"><span class="c"><i class="box"></i><span><b>Klar det hele for mig</b><span class="d">Hosting, opdateringer og ændringer</span></span></span></label>
+   </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="step" data-name="Kontakt">
+   <h2 class="q">Hvor skal jeg sende estimatet hen?</h2>
+   <p class="hint">Jeg kigger på dine svar og vender tilbage med et prisestimat.</p>
+   <div class="grid2">
+    <label class="field"><span>Navn *</span><input type="text" name="Navn" autocomplete="name" required></label>
+    <label class="field"><span>Virksomhed</span><input type="text" name="Virksomhed" autocomplete="organization"></label>
+    <label class="field"><span>E-mail *</span><input type="email" name="E-mail" autocomplete="email" required></label>
+    <label class="field"><span>Telefon</span><input type="tel" name="Telefon" autocomplete="tel"></label>
+   </div>
+   <label class="field"><span>Er der andet, jeg skal vide? (valgfrit)</span><textarea name="Besked" placeholder="Fx hvad du sælger, hvem dine kunder er, eller en side du godt kan lide"></textarea></label>
+   <p class="err" id="err"></p>
+  </section>
+
+  <!-- done -->
+  <section class="step done" data-name="Tak">
+   <h2 class="q">Tak, din forespørgsel <em>er klar.</em></h2>
+   <p>Dit mailprogram åbner med dine svar udfyldt. Tryk send, så vender jeg tilbage med et prisestimat. Åbnede der ikke noget, kan du skrive direkte til <a href="mailto:kontakt@renacer.dk" style="border-bottom:1px solid var(--acc)">kontakt@renacer.dk</a>.</p>
+   <dl class="summary" id="summary"></dl>
+   <a class="btn" href="/">Tilbage til forsiden</a>
+  </section>
+
+  <div class="nav-btns" id="navBtns">
+   <button type="button" class="btn ghost" id="prev">Tilbage</button>
+   <button type="button" class="btn" id="next">Næste</button>
+  </div>
+ </form>
+</div></main>
+
+<footer><div class="wrap"><span>© 2026 Renacer · renacer.dk</span><a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></div></footer>
+
+<script>
+(function(){
+ var f=document.getElementById('f'),steps=[].slice.call(f.querySelectorAll('.step')),cur=0,LAST=5;
+ var next=document.getElementById('next'),prev=document.getElementById('prev'),bar=document.getElementById('bar');
+ var stepNo=document.getElementById('stepNo'),stepName=document.getElementById('stepName'),err=document.getElementById('err');
+ var optional={2:true};
+ function answered(i){
+  if(optional[i]||i===LAST)return true;
+  return !!steps[i].querySelector('input:checked');
+ }
+ function show(i){
+  steps[cur].classList.remove('on');cur=i;steps[cur].classList.add('on');
+  var done=cur>LAST;
+  document.getElementById('navBtns').style.display=done?'none':'flex';
+  prev.style.visibility=cur===0?'hidden':'visible';
+  next.textContent=cur===LAST?'Send forespørgsel':(cur===2&&!steps[2].querySelector('input:checked')?'Spring over':'Næste');
+  next.disabled=!answered(cur);
+  bar.style.width=(done?100:((cur+1)/6*100))+'%';
+  stepNo.textContent=done?'06':('0'+(cur+1));
+  stepName.textContent=steps[cur].dataset.name;
+  err.textContent='';
+  window.scrollTo({top:0,behavior:'smooth'});
+ }
+ f.addEventListener('change',function(e){
+  if(e.target.name==='Udgangspunkt'){document.getElementById('urlField').hidden=e.target.value.indexOf('Forny')!==0;}
+  next.disabled=!answered(cur);
+  if(cur===2)next.textContent=steps[2].querySelector('input:checked')?'Næste':'Spring over';
+  // auto-advance on single-choice steps
+  if(e.target.type==='radio'&&cur!==0){setTimeout(function(){if(answered(cur))show(cur+1)},280);}
+ });
+ prev.addEventListener('click',function(){if(cur>0)show(cur-1)});
+ next.addEventListener('click',function(){
+  if(cur<LAST){if(answered(cur))show(cur+1);return;}
+  var n=f.querySelector('[name="Navn"]'),m=f.querySelector('[name="E-mail"]');
+  if(!n.value.trim()){err.textContent='Skriv venligst dit navn.';n.focus();return;}
+  if(!/^\S+@\S+\.\S+$/.test(m.value.trim())){err.textContent='Skriv venligst en gyldig e-mail.';m.focus();return;}
+  send();
+ });
+ function collect(){
+  var order=['Udgangspunkt','Nuværende side','Størrelse','Funktioner','Indhold','Efter lancering','Navn','Virksomhed','E-mail','Telefon','Besked'],out=[];
+  order.forEach(function(k){
+   var els=f.querySelectorAll('[name="'+k+'"]'),v=[];
+   els.forEach(function(el){if((el.type==='radio'||el.type==='checkbox')){if(el.checked)v.push(el.value)}else if(el.value.trim())v.push(el.value.trim())});
+   if(v.length)out.push([k,v.join(', ')]);
+  });
+  return out;
+ }
+ function send(){
+  var rows=collect(),body=rows.map(function(r){return r[0]+': '+r[1]}).join('\n');
+  var who=(f.querySelector('[name="Virksomhed"]').value.trim()||f.querySelector('[name="Navn"]').value.trim());
+  var href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Prisestimat: '+who)+'&body='+encodeURIComponent('Hej Renacer\n\nJeg vil gerne have et prisestimat på en hjemmeside.\n\n'+body+'\n');
+  var dl=document.getElementById('summary');
+  dl.innerHTML=rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1].replace(/</g,'&lt;')+'</dd></div>'}).join('');
+  show(LAST+1);
+  window.location.href=href;
+ }
+ show(0);
+})();
+</script>
+</body>
+</html>

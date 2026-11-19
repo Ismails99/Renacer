@@ -40,6 +40,10 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 .panel .talk{margin-top:6vh;color:#9c988f;font-size:14px}
 .panel .talk a{color:var(--bg);border-bottom:1px solid #555}
 
+.nav-r{display:flex;align-items:center;gap:28px}
+.nav-cta{font-size:14px;font-weight:500;border:1px solid var(--ink);border-radius:30px;padding:9px 18px;transition:background .2s,color .2s}
+.nav-cta:hover{background:var(--ink);color:var(--bg)}
+@media (max-width:600px){.nav-cta{display:none}}
 /* HERO */
 .hero{padding:120px 0 120px}
 .hero .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:60px}
@@ -276,13 +280,13 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 
 <nav><div class="wrap">
  <a class="wordmark" href="#top">RENACER</a>
- <button class="menu-btn" onclick="document.querySelector('.panel').classList.add('open')">Menu <span></span></button>
+ <div class="nav-r"><a class="nav-cta" href="/prisestimat">Få et prisestimat</a><button class="menu-btn" onclick="document.querySelector('.panel').classList.add('open')">Menu <span></span></button></div>
 </div></nav>
 
 <div class="panel"><div class="wrap">
  <div class="top"><span class="wordmark">RENACER</span><button class="close" onclick="this.closest('.panel').classList.remove('open')">Luk ✕</button></div>
  <ul onclick="if(event.target.tagName==='A')this.closest('.panel').classList.remove('open')">
-  <li><a href="#proces">Proces</a></li><li><a href="#ydelser">Ydelser</a></li><li><a href="#sammenligning">Sammenligning</a></li><li><a href="#om">Om Renacer</a></li><li><a href="#kontakt">Kontakt</a></li>
+  <li><a href="#proces">Proces</a></li><li><a href="#ydelser">Ydelser</a></li><li><a href="#sammenligning">Sammenligning</a></li><li><a href="#om">Om Renacer</a></li><li><a href="#kontakt">Kontakt</a></li><li><a href="/prisestimat">Prisestimat</a></li>
  </ul>
  <p class="talk">Lad os tale sammen: <a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></p>
 </div></div>
@@ -293,7 +297,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  </div>
  <div class="row">
   <p class="lede"><span class="pain">Dine kunder leder efter dig online, men finder dine konkurrenter.</span><strong>Jeg bygger en hjemmeside, der bliver fundet og får dem til at vælge dig.</strong></p>
-  <div class="right"><a class="arrow" href="#om">Om Renacer</a></div>
+  <div class="right"><a class="arrow" href="/prisestimat">Få et prisestimat</a></div>
  </div>
  <div class="reel">
   <div class="screen">
@@ -492,7 +496,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <h2>Fortæl mig om din forretning.</h2>
  <div class="ways">
   <div><small>Mail</small><a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></div>
-  <div><small>Hvor</small><span>Danmark</span></div>
+  <div><small>Prisestimat</small><a href="/prisestimat">Svar på 6 spørgsmål →</a></div>
  </div>
 </div></section>
 
