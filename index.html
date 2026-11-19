@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbfbfa">
+<title>Renacer – Hjemmesider til små virksomheder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfbfa;--soft:#f2f1ee;--ink:#121212;--muted:#6f6c67;--line:#e4e2dd;--acc:#a8854a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+.wordmark{font-family:Italiana,Georgia,serif;letter-spacing:.32em;font-size:22px}
+.tight{font-family:"Inter Tight",Inter,sans-serif}
+.label{font-size:12px;letter-spacing:.08em;color:var(--muted);display:flex;gap:14px;align-items:center}
+.label i{font-style:normal;color:var(--acc)}
+h2{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:56px;line-height:1.04;letter-spacing:-.03em}
+.arrow{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.arrow:after{content:"→";transition:transform .2s}
+.arrow:hover:after{transform:translateX(4px)}
+section{padding:140px 0;border-top:1px solid var(--line)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:20;background:rgba(251,251,250,.86);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:84px}
+.menu-btn{font-size:14px;font-weight:500;background:none;border:0;cursor:pointer;display:flex;gap:10px;align-items:center;color:var(--ink);font-family:inherit}
+.menu-btn span{display:block;width:22px;height:1px;background:var(--ink);box-shadow:0 6px 0 var(--ink)}
+.panel{position:fixed;inset:0;background:var(--ink);color:var(--bg);z-index:30;display:none;flex-direction:column}
+.panel.open{display:flex}
+.panel .wrap{width:100%}
+.panel .top{display:flex;justify-content:space-between;align-items:center;height:84px}
+.panel .close{background:none;border:0;color:var(--bg);font:500 14px Inter,sans-serif;cursor:pointer}
+.panel ul{list-style:none;margin-top:8vh}
+.panel li a{font-family:"Inter Tight",sans-serif;font-size:72px;font-weight:500;letter-spacing:-.03em;line-height:1.15;display:inline-block}
+.panel li a:hover{color:var(--acc)}
+.panel .talk{margin-top:6vh;color:#9c988f;font-size:14px}
+.panel .talk a{color:var(--bg);border-bottom:1px solid #555}
+
+/* HERO */
+.hero{padding:120px 0 120px}
+.hero .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:60px}
+.hero h1{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:132px;line-height:.95;letter-spacing:-.045em;max-width:1100px}
+.hero h1 em{font-family:Italiana,serif;font-style:normal;font-weight:400;letter-spacing:-.01em;color:var(--acc)}
+.hero .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:80px;align-items:end}
+.hero .row p{font-size:19px;color:#3b3a37;max-width:500px}
+.hero .row .right{justify-self:end;text-align:right}
+.hero .reel{margin-top:90px;height:420px;border-radius:6px;background:linear-gradient(135deg,#1a1917,#2b2925 60%,#3a352c);position:relative;overflow:hidden;color:#e9e5dc}
+.reel .screen{position:absolute;left:50%;top:60px;transform:translateX(-50%);width:760px;height:420px;background:var(--bg);border-radius:8px 8px 0 0;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
+.screen .bar{height:30px;background:var(--soft);display:flex;align-items:center;gap:6px;padding:0 12px}
+.screen .bar b{width:8px;height:8px;border-radius:50%;background:#d6d3cc}
+.screen .bar span{margin-left:14px;font-size:11px;color:var(--muted);background:#fff;padding:2px 14px;border-radius:10px}
+.screen .in{padding:34px 40px;color:var(--ink)}
+.screen .in .wm{font-family:Italiana,serif;letter-spacing:.3em;font-size:13px}
+.screen .in h5{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:42px;letter-spacing:-.03em;line-height:1;margin:40px 0 18px;max-width:460px}
+.screen .in .ln{height:7px;background:var(--line);border-radius:4px;margin:8px 0;width:300px}
+.screen .in .ln.s{width:220px}
+.screen .in .btn{display:inline-block;margin-top:20px;background:var(--ink);color:var(--bg);font-size:11px;padding:8px 16px;border-radius:20px}
+.reel .tag{position:absolute;left:28px;bottom:24px;font-size:12px;letter-spacing:.08em;color:#b9b3a8}
+
+/* PROCESS */
+.head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+.head p{color:var(--muted);max-width:440px;justify-self:end}
+.steps{border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:80px 1fr 1fr 380px;gap:40px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start}
+.step .n{font-size:13px;color:var(--acc);font-weight:500;padding-top:8px}
+.step .t small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:8px}
+.step h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:30px;letter-spacing:-.02em;line-height:1.1}
+.step p{color:var(--muted);font-size:15px;padding-top:6px}
+.mock{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:13px;box-shadow:0 10px 30px -18px rgba(0,0,0,.25)}
+.mock .f{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--soft)}
+.mock .f:last-child{border:0}
+.mock .f span{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);border-radius:20px;padding:4px 11px;font-size:12px;background:var(--bg)}
+.chip.ok{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.acc{border-color:var(--acc);color:var(--acc)}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mini div{height:62px;border-radius:6px;background:var(--soft);border:1px solid var(--line)}
+.mini div.sel{border:1.5px solid var(--ink)}
+
+/* STATEMENT */
+.statement{background:var(--ink);color:var(--bg);border:0}
+.statement .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:80px;align-items:end}
+.statement h2{font-size:72px}
+.statement h2 em{font-family:Italiana,serif;font-style:normal;font-weight:400;color:#cfb47e}
+.statement p{color:#aaa59c;font-size:17px}
+.statement .label{color:#8a867e;margin-bottom:40px}
+
+/* SERVICES */
+.list{border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:80px 1.1fr 1fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.item .n{font-size:13px;color:var(--acc);font-weight:500}
+.item h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:38px;letter-spacing:-.025em;line-height:1.05}
+.item p{color:var(--muted);font-size:15px}
+
+/* COMPARE */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:20px 24px 20px 0;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+thead th{font-size:12px;letter-spacing:.08em;color:var(--muted);padding-bottom:16px}
+thead th.us{color:var(--ink);font-weight:500}
+tbody th{width:24%;font-weight:500}
+td{color:var(--muted);width:38%}
+td.us{color:var(--ink)}
+td.us:before{content:"✓";color:var(--acc);margin-right:10px}
+.note{font-size:12px;color:#9a968f;margin-top:22px}
+
+/* MODELS */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.model{border:1px solid var(--line);border-radius:10px;padding:34px 30px 38px;background:#fff}
+.model.feat{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.model .label{margin-bottom:60px}
+.model.feat .label{color:#8a867e}
+.model h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:30px;letter-spacing:-.02em;margin-bottom:12px}
+.model p{color:var(--muted);font-size:15px}
+.model.feat p{color:#aaa59c}
+
+/* ABOUT */
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.about h2 em{font-family:Italiana,serif;font-style:normal;font-weight:400;color:var(--acc)}
+.about p{color:#3b3a37;font-size:18px;margin-bottom:22px;max-width:520px}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:0 30px;margin-top:20px}
+.why div{padding:18px 0;border-top:1px solid var(--line);font-size:15px}
+.why div b{display:block;font-weight:500;margin-bottom:2px}
+.why div span{color:var(--muted)}
+
+/* CONTACT */
+.contact{padding:160px 0}
+.contact h2{font-size:104px;letter-spacing:-.045em;line-height:.98;max-width:1000px;margin:30px 0 60px}
+.contact .ways{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.contact .ways div{padding:26px 0}
+.contact .ways small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:6px}
+.contact .ways a,.contact .ways span{font-size:20px;font-family:"Inter Tight",sans-serif;font-weight:500}
+
+footer{border-top:1px solid var(--line);padding:34px 0;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center}
+footer .wordmark{font-size:17px;color:var(--ink)}
+
+@media (max-width:900px){
+ .wrap{padding:0 20px}
+ .hero{padding:70px 0}.hero h1{font-size:58px}.hero .row,.head,.statement .wrap,.about .wrap{grid-template-columns:1fr;gap:28px}
+ .hero .row .right{justify-self:start;text-align:left}.head p{justify-self:start}
+ .hero .reel{height:260px}.reel .screen{width:92%;top:40px}
+ h2,.statement h2{font-size:38px}.contact h2{font-size:50px}
+ .step,.item{grid-template-columns:1fr;gap:12px}
+ .models,.contact .ways,.why{grid-template-columns:1fr}
+ section{padding:90px 0}.panel li a{font-size:44px}
+ table{font-size:13.5px}th,td{padding:14px 10px 14px 0}
+ footer .wrap{flex-direction:column;gap:10px}
+}
+</style>
+</head>
+<body id="top">
+
+<nav><div class="wrap">
+ <a class="wordmark" href="#top">RENACER</a>
+ <button class="menu-btn" onclick="document.querySelector('.panel').classList.add('open')">Menu <span></span></button>
+</div></nav>
+
+<div class="panel"><div class="wrap">
+ <div class="top"><span class="wordmark">RENACER</span><button class="close" onclick="this.closest('.panel').classList.remove('open')">Luk ✕</button></div>
+ <ul onclick="if(event.target.tagName==='A')this.closest('.panel').classList.remove('open')">
+  <li><a href="#proces">Proces</a></li><li><a href="#ydelser">Ydelser</a></li><li><a href="#sammenligning">Sammenligning</a></li><li><a href="#om">Om Renacer</a></li><li><a href="#kontakt">Kontakt</a></li>
+ </ul>
+ <p class="talk">Lad os tale sammen: <a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></p>
+</div></div>
+
+<header class="hero"><div class="wrap">
+ <div class="meta"><span>Webdesign til små virksomheder</span><span>Danmark, 2026</span></div>
+ <h1>Din hjemmeside, <em>genfødt.</em></h1>
+ <div class="row">
+  <p>Jeg designer og bygger enkle, smukke hjemmesider til små virksomheder. Sider, der bliver fundet og får flere kunder til at tage kontakt.</p>
+  <div class="right"><a class="arrow" href="#om">Om Renacer</a></div>
+ </div>
+ <div class="reel">
+  <div class="screen">
+   <div class="bar"><b></b><b></b><b></b><span>dinvirksomhed.dk</span></div>
+   <div class="in"><div class="wm">DIN VIRKSOMHED</div><h5>Et nyt første indtryk.</h5><div class="ln"></div><div class="ln s"></div><span class="btn">Book tid</span></div>
+  </div>
+  <span class="tag">Udkast 2026</span>
+ </div>
+</div></header>
+
+<section id="proces"><div class="wrap">
+ <div class="head">
+  <div><div class="label"><i>●</i> Proces</div><h2 style="margin-top:20px">Fra første snak<br>til færdig side.</h2></div>
+  <p>Fem enkle trin. Du ser altid, hvad du får, før noget bliver bygget, og du bestemmer selv, hvor meget du vil være med.</p>
+ </div>
+ <div class="steps">
+  <div class="step"><span class="n">01</span><div class="t"><small>Samtale</small><h3>Forstå din forretning.</h3></div><p>Vi tager en uforpligtende snak om dine kunder, hvad du sælger, og hvad siden skal kunne.</p>
+   <div class="mock"><div class="f"><span>Virksomhed</span>Frisør, København</div><div class="f"><span>Mål</span>Flere bookinger</div><div class="f"><span>Behov</span>Ny side, hosting</div></div></div>
+  <div class="step"><span class="n">02</span><div class="t"><small>Plan</small><h3>Lægge retningen.</h3></div><p>Jeg planlægger sidens indhold og opbygning, så den leder besøgende hen mod at tage kontakt.</p>
+   <div class="mock"><div class="chips"><span class="chip">Forside</span><span class="chip">Ydelser</span><span class="chip">Priser</span><span class="chip">Anmeldelser</span><span class="chip acc">Kontakt</span></div></div></div>
+  <div class="step"><span class="n">03</span><div class="t"><small>Udkast</small><h3>Et første udkast.</h3></div><p>Du får et visuelt udkast, så du kan se, hvordan din nye side kommer til at se ud.</p>
+   <div class="mock"><div class="mini"><div class="sel"></div><div></div></div><div class="chips" style="margin-top:12px"><span class="chip">Udkast A</span><span class="chip">Udkast B</span></div></div></div>
+  <div class="step"><span class="n">04</span><div class="t"><small>Justering</small><h3>Du vælger, jeg finpudser.</h3></div><p>Vi retter til, indtil du er tilfreds, og jeg bygger siden færdig i WordPress.</p>
+   <div class="mock"><div class="chips"><span class="chip">Rettelse 2 / 2</span><span class="chip ok">Godkendt ✓</span></div></div></div>
+  <div class="step"><span class="n">05</span><div class="t"><small>Lancering</small><h3>Live, og passet på.</h3></div><p>Siden går live, klar til mobil og Google. Du vælger, om du selv passer den, eller om jeg gør.</p>
+   <div class="mock"><div class="chips"><span class="chip">Web</span><span class="chip">Hosting</span><span class="chip">Support</span><span class="chip">Justering</span></div></div></div>
+ </div>
+</div></section>
+
+<section class="statement"><div class="wrap">
+ <div><div class="label">Hvorfor det betyder noget</div><h2>Første indtryk <em>sælger.</em></h2></div>
+ <p>Din hjemmeside er ofte det første, en ny kunde ser. En gammel eller manglende side koster kunder hver dag. En enkel, professionel side får dem til at ringe.</p>
+</div></section>
+
+<section id="ydelser"><div class="wrap">
+ <div class="head">
+  <div><div class="label"><i>●</i> Ydelser</div><h2 style="margin-top:20px">Alt samlet ét sted.</h2></div>
+  <p>Ingen bureau, hostingfirma og IT-mand at jonglere med. Én person tager sig af det hele.</p>
+ </div>
+ <div class="list">
+  <div class="item"><span class="n">01</span><h3>Professionelle hjemmesider</h3><p>Skræddersyet design, hurtigt og mobilvenligt, bygget til at få besøgende til at ringe, skrive eller booke.</p></div>
+  <div class="item"><span class="n">02</span><h3>Hosting</h3><p>Stabil og sikker drift med SSL-certifikat og backup. Du skal ikke tænke på servere.</p></div>
+  <div class="item"><span class="n">03</span><h3>Support</h3><p>Spørgsmål eller problemer går direkte til mig, ikke til et callcenter.</p></div>
+  <div class="item"><span class="n">04</span><h3>Løbende justering</h3><p>Nye priser, billeder eller tilbud. Jeg holder siden opdateret, så den bliver ved med at sælge.</p></div>
+ </div>
+</div></section>
+
+<section id="sammenligning"><div class="wrap">
+ <div class="head">
+  <div><div class="label"><i>●</i> Sammenligning</div><h2 style="margin-top:20px">Leje eller eje.</h2></div>
+  <p>Byggeværktøjer som Wix er gode til at komme i gang selv. Men du betaler måned efter måned for at leje en side, du selv skal bygge og passe.</p>
+ </div>
+ <table>
+  <thead><tr><th></th><th>Wix og lignende</th><th class="us">Renacer</th></tr></thead>
+  <tbody>
+   <tr><th>Hvem bygger siden</th><td>Du selv, ud fra en skabelon</td><td class="us">Jeg bygger den for dig</td></tr>
+   <tr><th>Design</th><td>Skabeloner, som mange andre også bruger</td><td class="us">Skræddersyet til din forretning</td></tr>
+   <tr><th>Ejerskab</th><td>Du lejer siden, så længe du betaler</td><td class="us">Mulighed for, at du ejer siden</td></tr>
+   <tr><th>Platform</th><td>Låst til platformens eget system</td><td class="us">WordPress, som kan flyttes</td></tr>
+   <tr><th>Selv redigere</th><td>Ja, i platformens editor</td><td class="us">Ja, i WordPress, hvis du vil</td></tr>
+   <tr><th>Hjælp</th><td>Hjælpecenter og support-chat</td><td class="us">Direkte kontakt til mig</td></tr>
+   <tr><th>Ændringer</th><td>Du laver dem selv</td><td class="us">Selv, eller jeg gør det efter behov</td></tr>
+   <tr><th>Betaling</th><td>Fast månedligt abonnement</td><td class="us">Efter aftale og dit behov</td></tr>
+  </tbody>
+ </table>
+ <p class="note">Wix er et varemærke tilhørende Wix.com Ltd. og nævnes kun som eksempel. Renacer er ikke tilknyttet Wix.</p>
+</div></section>
+
+<section id="samarbejde"><div class="wrap">
+ <div class="head">
+  <div><div class="label"><i>●</i> Samarbejde</div><h2 style="margin-top:20px">Du bestemmer,<br>hvor meget du vil.</h2></div>
+  <p>Når siden er klar, vælger du, hvordan den skal passes. Du kan altid skifte senere.</p>
+ </div>
+ <div class="models">
+  <div class="model"><div class="label">01 · Selvstændig</div><h3>Du får nøglerne</h3><p>Jeg bygger siden og overdrager den til dig. Du ejer den og styrer den selv i WordPress.</p></div>
+  <div class="model feat"><div class="label">02 · Fleksibel</div><h3>Selv, med backup</h3><p>Du klarer de små ting selv og skriver til mig, når der er noget større, der skal laves.</p></div>
+  <div class="model"><div class="label">03 · Fuld service</div><h3>Jeg klarer det hele</h3><p>Hosting, opdateringer, sikkerhed og løbende ændringer. Du fokuserer på din forretning.</p></div>
+ </div>
+</div></section>
+
+<section class="about" id="om"><div class="wrap">
+ <div><div class="label"><i>●</i> Om Renacer · Hvorfor mig?</div><h2 style="margin-top:20px">Renacer er spansk for <em>at blive genfødt.</em></h2></div>
+ <div>
+  <p>Det er præcis, hvad jeg gør for små virksomheder: Jeg tager en forældet eller manglende hjemmeside og giver den nyt liv, så den arbejder for dig i stedet for imod dig.</p>
+  <p>Du får ikke en platform eller et callcenter. Du får én person, der kender din forretning.</p>
+  <div class="why">
+   <div><b>Fokus på salg</b><span>Bygget til at skaffe kunder</span></div>
+   <div><b>Du kan eje din side</b><span>Ikke noget du lejer</span></div>
+   <div><b>Bygget på WordPress</b><span>Ret selv, eller flyt den</span></div>
+   <div><b>Én fast kontakt</b><span>Fra start til slut</span></div>
+  </div>
+ </div>
+</div></section>
+
+<section class="contact" id="kontakt"><div class="wrap">
+ <div class="label"><i>●</i> Kontakt</div>
+ <h2>Fortæl mig om din forretning.</h2>
+ <div class="ways">
+  <div><small>Mail</small><a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></div>
+  <div><small>Telefon</small><span>+45 00 00 00 00</span></div>
+  <div><small>Hvor</small><span>Danmark</span></div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <span class="wordmark">RENACER</span>
+ <span>© 2026 Renacer · renacer.dk</span>
+ <a href="#top">Til toppen ↑</a>
+</div></footer>
+
+</body>
+</html>
