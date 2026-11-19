@@ -45,8 +45,9 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 .hero .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:60px}
 .hero h1{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:132px;line-height:.95;letter-spacing:-.045em;max-width:1100px}
 .hero h1 em{font-family:Italiana,serif;font-style:normal;font-weight:400;letter-spacing:-.01em;color:var(--acc)}
-.hero .row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:80px;align-items:end}
-.hero .row p{font-size:19px;color:#3b3a37;max-width:500px}
+.hero .row{display:grid;grid-template-columns:1.6fr .4fr;gap:60px;margin-top:80px;align-items:end}
+.hero .row p.lede{font-family:"Inter Tight",sans-serif;font-size:30px;line-height:1.28;letter-spacing:-.02em;color:#8a867f;max-width:640px;font-weight:400}
+.hero .row p.lede strong{color:var(--ink);font-weight:500}
 .hero .row .right{justify-self:end;text-align:right}
 .hero .reel{margin-top:90px;height:420px;border-radius:6px;background:linear-gradient(135deg,#1a1917,#2b2925 60%,#3a352c);position:relative;overflow:hidden;color:#e9e5dc}
 .reel .screen{position:absolute;left:50%;top:60px;transform:translateX(-50%);width:760px;height:420px;background:var(--bg);border-radius:8px 8px 0 0;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden}
@@ -259,7 +260,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 @media (max-width:900px){
  .wrap{padding:0 20px}
  .hero{padding:70px 0}.hero h1{font-size:58px}.hero .row,.head,.statement .wrap,.about .wrap{grid-template-columns:1fr;gap:28px}
- .hero .row .right{justify-self:start;text-align:left}.head p{justify-self:start}
+ .hero .row .right{justify-self:start;text-align:left}.hero .row p.lede{font-size:22px}.head p{justify-self:start}
  .hero .reel{height:260px}.reel .screen{width:92%;top:40px}
  h2,.statement h2{font-size:38px}.contact h2{font-size:50px}
  .step,.item{grid-template-columns:1fr;gap:12px}
@@ -289,7 +290,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <div class="meta"><span>Webdesign til små virksomheder</span><span>Danmark, 2026</span></div>
  <h1>Din hjemmeside, <em>genfødt.</em></h1>
  <div class="row">
-  <p>Jeg designer og bygger enkle, smukke hjemmesider til små virksomheder. Sider, der bliver fundet og får flere kunder til at tage kontakt.</p>
+  <p class="lede"><strong>Jeg designer og bygger smukke, enkle hjemmesider til små virksomheder.</strong> Sider, der bliver fundet på Google og gør besøgende til kunder.</p>
   <div class="right"><a class="arrow" href="#om">Om Renacer</a></div>
  </div>
  <div class="reel">
