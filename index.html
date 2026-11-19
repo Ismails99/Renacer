@@ -61,26 +61,131 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 .screen .in .btn{display:inline-block;margin-top:20px;background:var(--ink);color:var(--bg);font-size:11px;padding:8px 16px;border-radius:20px}
 .reel .tag{position:absolute;left:28px;bottom:24px;font-size:12px;letter-spacing:.08em;color:#b9b3a8}
 
-/* PROCESS */
-.head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
-.head p{color:var(--muted);max-width:440px;justify-self:end}
-.steps{border-top:1px solid var(--line)}
-.step{display:grid;grid-template-columns:80px 1fr 1fr 380px;gap:40px;padding:44px 0;border-bottom:1px solid var(--line);align-items:start}
-.step .n{font-size:13px;color:var(--acc);font-weight:500;padding-top:8px}
-.step .t small{display:block;font-size:12px;color:var(--muted);letter-spacing:.08em;margin-bottom:8px}
-.step h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:30px;letter-spacing:-.02em;line-height:1.1}
-.step p{color:var(--muted);font-size:15px;padding-top:6px}
-.mock{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:13px;box-shadow:0 10px 30px -18px rgba(0,0,0,.25)}
-.mock .f{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--soft)}
-.mock .f:last-child{border:0}
-.mock .f span{color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);border-radius:20px;padding:4px 11px;font-size:12px;background:var(--bg)}
-.chip.ok{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.chip.acc{border-color:var(--acc);color:var(--acc)}
-.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.mini div{height:62px;border-radius:6px;background:var(--soft);border:1px solid var(--line)}
-.mini div.sel{border:1.5px solid var(--ink)}
+/* INTERACTIVE PROCESS */
+.pf-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.pf-tab{background:none;border:0;text-align:left;cursor:pointer;font:500 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a9a6a0;padding:0;transition:color .3s}
+.pf-tab small{display:block;font-size:11px;letter-spacing:.1em;margin:12px 0 6px;font-weight:400}
+.pf-tab .bar{display:block;height:2px;background:var(--line);position:relative;overflow:hidden}
+.pf-tab .bar b{position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left}
+.pf-tab.done .bar b{transform:scaleX(1)}
+.pf-tab.on{color:var(--ink)}
+.pf-tab.on .bar b{animation:pfill var(--dur,6s) linear forwards}
+.pf.paused .pf-tab.on .bar b{animation-play-state:paused}
+@keyframes pfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.pf-title{font-family:"Inter Tight",sans-serif;font-weight:400;font-size:64px;letter-spacing:-.035em;line-height:1.05;margin:36px 0 40px;min-height:68px;transition:opacity .3s,transform .3s}
+.pf-title.out{opacity:0;transform:translateY(8px)}
+.pf-stage{position:relative;height:560px;background:#141413;border-radius:4px;color:#e9e5dc}
+.cr{position:absolute;width:18px;height:18px;border:1px solid #5a564f}
+.cr.tl{left:34px;top:28px;border-right:0;border-bottom:0}.cr.tr{right:34px;top:28px;border-left:0;border-bottom:0}
+.cr.bl{left:34px;bottom:28px;border-right:0;border-top:0}.cr.br{right:34px;bottom:28px;border-left:0;border-top:0}
+.pf-scene{position:absolute;inset:0;display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .5s}
+.pf-scene.on{opacity:1}
+.pf-scene .ch{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#f4f0e8;padding-bottom:16px;border-bottom:1px solid #3a3833;margin-bottom:8px}
+/* staggered reveal */
+.pf-scene [data-r],.pf-scene .fr,.pf-scene .node,.pf-scene .blk,.pf-scene .pin,.pf-scene .note,.pf-scene .chip,.pf-scene .kit,.pf-scene .phone,.pf-scene .meter,.pf-scene .kpis>div{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s}
+.pf-scene.on .fr,.pf-scene.on .node,.pf-scene.on .blk,.pf-scene.on .pin,.pf-scene.on .note,.pf-scene.on .chip,.pf-scene.on .kit,.pf-scene.on .phone,.pf-scene.on .meter,.pf-scene.on .kpis>div{opacity:1;transform:none}
+.pf-scene.on :nth-child(2){transition-delay:.12s}.pf-scene.on :nth-child(3){transition-delay:.24s}.pf-scene.on :nth-child(4){transition-delay:.36s}.pf-scene.on :nth-child(5){transition-delay:.48s}.pf-scene.on :nth-child(6){transition-delay:.6s}
+
+/* 01 brief */
+.brief{width:440px;border:1px solid #4a4741;padding:40px 48px 34px}
+.fr{display:grid;grid-template-columns:120px 1fr;align-items:center;padding:13px 0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a6a196}
+.fr em{display:block;height:1px;background:#d9d4ca;width:0;transition:width .9s .3s ease}
+.pf-scene.on .fr em{width:var(--w)}
+/* 02 tree */
+.tree{width:640px;text-align:center}
+.tree .links{width:600px;height:70px;display:block;margin:0 auto}
+.tree .links path{stroke:#5a564f;fill:none;stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.2s .2s}
+.pf-scene.on .tree .links path{stroke-dashoffset:0}
+.node{display:inline-block;border:1px solid #4a4741;padding:12px 18px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#e9e5dc;background:#1b1a18}
+.node.root{padding:14px 30px;border-color:#a6a196}
+.node.goal{border-color:var(--acc);color:#d8bd85}
+.kids{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:640px;margin:0 auto}
+.kids .node{padding:12px 4px}
+/* browser shared */
+.browser,.desk{background:#f6f5f2;border-radius:6px;overflow:hidden;position:relative;color:var(--ink)}
+.bb{height:26px;background:#e7e5e0;display:flex;align-items:center;gap:5px;padding:0 10px;font-size:10px;color:#77736c}
+.bb i{width:7px;height:7px;border-radius:50%;background:#cbc8c1}
+.bb span{margin-left:10px;background:#fff;padding:1px 12px;border-radius:8px}
+.wf{padding:18px 22px}
+.wf-nav{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.wf-nav b{width:60px;height:8px;background:#121212;margin-right:auto}
+.wf-nav span{width:30px;height:5px;background:#cfccc5}
+.wf-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+.wf-hero em{display:block;height:14px;background:#121212;margin:6px 0;border-radius:2px}
+.wf-hero em.s{height:6px;background:#cfccc5;margin-top:12px}
+.wf-hero u{display:inline-block;width:70px;height:18px;border-radius:9px;background:var(--acc);margin-top:12px}
+.wf-hero .img{height:110px;background:linear-gradient(135deg,#d9d6cf,#ebe9e4);border-radius:3px}
+.wf-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.wf-cols div{height:50px;background:#ebe9e4;border-radius:3px}
+/* 03 design */
+.design{display:flex;gap:28px;align-items:center}
+.design .browser{width:480px}
+.kit{width:190px;border:1px solid #4a4741;padding:22px;background:#1b1a18}
+.sw{display:flex;gap:8px;margin:14px 0 18px}.sw i{width:28px;height:28px;border-radius:50%;border:1px solid #3a3833}
+.aa{font-family:Italiana,serif;font-size:48px;line-height:1;color:#f4f0e8}
+.aa span{display:block;font:11px Inter,sans-serif;letter-spacing:.1em;color:#a6a196;margin-top:10px}
+/* 04 build */
+.build{display:flex;gap:26px;align-items:flex-end;position:relative}
+.desk{width:440px;height:300px}
+.blocks{padding:16px;display:grid;gap:10px}
+.blk{height:44px;background:#ebe9e4;border:1px dashed #cfccc5;border-radius:3px}
+.blk.h{height:80px;background:#121212;border:0}
+.blk.s{height:24px}
+.blk.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:none;border:0}.blk.two span{background:#ebe9e4;border:1px dashed #cfccc5;border-radius:3px}
+.phone{width:120px;height:230px;background:#f6f5f2;border-radius:16px;padding:22px 10px 10px;display:grid;gap:8px;align-content:start;position:relative;border:4px solid #2a2926}
+.phone .notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:36px;height:6px;border-radius:3px;background:#2a2926}
+.phone .blk{height:28px}.phone .blk.h{height:60px}.phone .blk.s{height:14px}
+.meter{position:absolute;right:-200px;top:20px;width:170px;border:1px solid #4a4741;padding:16px 18px;background:#1b1a18}
+.meter .n{color:#d8bd85;font-size:13px;letter-spacing:0}
+.mbar{height:3px;background:#3a3833}.mbar b{display:block;height:100%;width:0;background:var(--acc);transition:width 1.4s .4s}
+.pf-scene.on .mbar b{width:98%}
+/* 05 feedback */
+.feedback{display:flex;flex-direction:column;align-items:center;gap:22px}
+.feedback .browser{width:520px;overflow:visible}
+.pin{position:absolute;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;font-size:11px;display:grid;place-items:center;font-weight:600;box-shadow:0 0 0 6px rgba(168,133,74,.25)}
+.p1{left:150px;top:62px}.p2{right:100px;top:120px}
+.note{position:absolute;background:#fff;color:var(--ink);font-size:12px;padding:8px 12px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.35);white-space:nowrap}
+.n1{left:-120px;top:40px}.n2{right:-110px;top:150px}
+.feedback .chips{display:flex;gap:8px}
+.feedback .chip{border:1px solid #4a4741;border-radius:20px;padding:5px 12px;font-size:12px;color:#d9d4ca}
+.feedback .chip.ok{background:#f4f0e8;color:var(--ink);border-color:#f4f0e8}
+/* 06 launch */
+.launch .browser{width:560px}
+.live{margin-left:auto!important;background:none!important;display:flex;align-items:center;gap:6px;color:#2f7d4f;font-weight:500}
+.live b{width:7px;height:7px;border-radius:50%;background:#34a35f;box-shadow:0 0 0 0 rgba(52,163,95,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(52,163,95,0)}100%{box-shadow:0 0 0 0 rgba(52,163,95,0)}}
+.stats{padding:20px 24px}
+.stats .ch{color:var(--ink);border-color:var(--line)}
+.stats .ch span:last-child{color:var(--muted);letter-spacing:.06em;text-transform:none}
+.stats svg{width:100%;height:120px;display:block;margin:10px 0 14px}
+.stats .line{fill:none;stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.6s .3s}
+.stats .area{fill:rgba(168,133,74,.14)}
+.pf-scene.on .stats .line{stroke-dashoffset:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpis div{border-top:1px solid var(--line);padding-top:10px}
+.kpis b{display:block;font:500 16px "Inter Tight",sans-serif}
+.kpis span{font-size:11px;color:var(--muted)}
+/* side cards */
+.side{position:absolute;background:#fbfbfa;border:1px solid var(--line);padding:18px 20px;width:230px;color:var(--ink);transition:opacity .35s,transform .35s;z-index:3}
+.side.out{opacity:0;transform:translateY(8px)}
+.side small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.side p{font-size:14px;line-height:1.5;color:#3b3a37}
+.side.left{left:-64px;top:90px}
+.side.right{right:-64px;bottom:120px}
+.side ul{list-style:none;font-size:14px;line-height:1.9;color:#3b3a37}
+.side li:before{content:"";display:inline-block;width:5px;height:5px;background:var(--acc);margin-right:12px;vertical-align:middle}
+@media (max-width:1300px){.side.left{left:-24px}.side.right{right:-24px}}
+@media (max-width:900px){
+ .pf-tabs{grid-template-columns:repeat(3,1fr);row-gap:22px}
+ .pf-title{font-size:36px;margin:28px 0 24px}
+ .pf-stage{height:auto;display:flex;flex-direction:column;padding:40px 16px 16px}
+ .pf-scene{position:relative;inset:auto;display:none;width:700px;left:50%;transform:translateX(-50%) scale(.48);transform-origin:top center;height:220px}
+ .pf-scene.on{display:grid;place-items:start center}
+ .meter,.note{display:none}
+ .side{position:static;width:auto;margin-top:12px}
+ .cr{display:none}
+}
+@media (prefers-reduced-motion:reduce){.pf-tab.on .bar b{animation:none;transform:scaleX(1)}.pf-scene *{transition:none!important}}
 
 /* STATEMENT */
 .statement{background:var(--ink);color:var(--bg);border:0}
@@ -187,19 +292,110 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 <section id="proces"><div class="wrap">
  <div class="head">
   <div><div class="label"><i>●</i> Proces</div><h2 style="margin-top:20px">Fra første snak<br>til færdig side.</h2></div>
-  <p>Fem enkle trin. Du ser altid, hvad du får, før noget bliver bygget, og du bestemmer selv, hvor meget du vil være med.</p>
+  <p>Seks trin fra idé til en hjemmeside, der sælger. Du ser altid, hvad du får, før noget bliver bygget.</p>
  </div>
- <div class="steps">
-  <div class="step"><span class="n">01</span><div class="t"><small>Samtale</small><h3>Forstå din forretning.</h3></div><p>Vi tager en uforpligtende snak om dine kunder, hvad du sælger, og hvad siden skal kunne.</p>
-   <div class="mock"><div class="f"><span>Virksomhed</span>Frisør, København</div><div class="f"><span>Mål</span>Flere bookinger</div><div class="f"><span>Behov</span>Ny side, hosting</div></div></div>
-  <div class="step"><span class="n">02</span><div class="t"><small>Plan</small><h3>Lægge retningen.</h3></div><p>Jeg planlægger sidens indhold og opbygning, så den leder besøgende hen mod at tage kontakt.</p>
-   <div class="mock"><div class="chips"><span class="chip">Forside</span><span class="chip">Ydelser</span><span class="chip">Priser</span><span class="chip">Anmeldelser</span><span class="chip acc">Kontakt</span></div></div></div>
-  <div class="step"><span class="n">03</span><div class="t"><small>Udkast</small><h3>Et første udkast.</h3></div><p>Du får et visuelt udkast, så du kan se, hvordan din nye side kommer til at se ud.</p>
-   <div class="mock"><div class="mini"><div class="sel"></div><div></div></div><div class="chips" style="margin-top:12px"><span class="chip">Udkast A</span><span class="chip">Udkast B</span></div></div></div>
-  <div class="step"><span class="n">04</span><div class="t"><small>Justering</small><h3>Du vælger, jeg finpudser.</h3></div><p>Vi retter til, indtil du er tilfreds, og jeg bygger siden færdig i WordPress.</p>
-   <div class="mock"><div class="chips"><span class="chip">Rettelse 2 / 2</span><span class="chip ok">Godkendt ✓</span></div></div></div>
-  <div class="step"><span class="n">05</span><div class="t"><small>Lancering</small><h3>Live, og passet på.</h3></div><p>Siden går live, klar til mobil og Google. Du vælger, om du selv passer den, eller om jeg gør.</p>
-   <div class="mock"><div class="chips"><span class="chip">Web</span><span class="chip">Hosting</span><span class="chip">Support</span><span class="chip">Justering</span></div></div></div>
+
+ <div class="pf" id="pf">
+  <div class="pf-tabs" role="tablist">
+   <button class="pf-tab" role="tab" data-i="0"><span class="bar"><b></b></span><small>01</small>Samtale</button>
+   <button class="pf-tab" role="tab" data-i="1"><span class="bar"><b></b></span><small>02</small>Struktur</button>
+   <button class="pf-tab" role="tab" data-i="2"><span class="bar"><b></b></span><small>03</small>Design</button>
+   <button class="pf-tab" role="tab" data-i="3"><span class="bar"><b></b></span><small>04</small>Bygning</button>
+   <button class="pf-tab" role="tab" data-i="4"><span class="bar"><b></b></span><small>05</small>Feedback</button>
+   <button class="pf-tab" role="tab" data-i="5"><span class="bar"><b></b></span><small>06</small>Lancering</button>
+  </div>
+  <h3 class="pf-title" aria-live="polite">Forstå din forretning.</h3>
+
+  <div class="pf-stage">
+   <i class="cr tl"></i><i class="cr tr"></i><i class="cr bl"></i><i class="cr br"></i>
+
+   <!-- 01 SAMTALE -->
+   <div class="pf-scene" data-s="0">
+    <div class="card brief">
+     <div class="ch"><span>Brief</span><span>01</span></div>
+     <div class="fr"><span>Virksomhed</span><em style="--w:72%"></em></div>
+     <div class="fr"><span>Kunder</span><em style="--w:52%"></em></div>
+     <div class="fr"><span>Mål</span><em style="--w:64%"></em></div>
+     <div class="fr"><span>Behov</span><em style="--w:44%"></em></div>
+     <div class="fr"><span>Budget</span><em style="--w:36%"></em></div>
+    </div>
+   </div>
+
+   <!-- 02 STRUKTUR -->
+   <div class="pf-scene" data-s="1">
+    <div class="tree">
+     <div class="node root">Forside</div>
+     <svg class="links" viewBox="0 0 600 70" preserveAspectRatio="none"><path d="M300 0 V30 M60 30 H540 M60 30 V70 M180 30 V70 M300 30 V70 M420 30 V70 M540 30 V70"/></svg>
+     <div class="kids"><div class="node">Ydelser</div><div class="node">Priser</div><div class="node">Om</div><div class="node">Anmeldelser</div><div class="node goal">Kontakt</div></div>
+    </div>
+   </div>
+
+   <!-- 03 DESIGN -->
+   <div class="pf-scene" data-s="2">
+    <div class="design">
+     <div class="browser">
+      <div class="bb"><i></i><i></i><i></i><span>dinvirksomhed.dk</span></div>
+      <div class="wf">
+       <div class="wf-nav"><b></b><span></span><span></span><span></span></div>
+       <div class="wf-hero"><div><em style="width:80%"></em><em style="width:60%"></em><em class="s" style="width:70%"></em><u></u></div><div class="img"></div></div>
+       <div class="wf-cols"><div></div><div></div><div></div></div>
+      </div>
+     </div>
+     <div class="kit">
+      <div class="ch"><span>Stil</span></div>
+      <div class="sw"><i style="background:#121212"></i><i style="background:#ece6dc"></i><i style="background:#a8854a"></i><i style="background:#6f6c67"></i></div>
+      <div class="aa">Aa<span>Overskrift · Brødtekst</span></div>
+     </div>
+    </div>
+   </div>
+
+   <!-- 04 BYGNING -->
+   <div class="pf-scene" data-s="3">
+    <div class="build">
+     <div class="desk">
+      <div class="bb"><i></i><i></i><i></i><span>WordPress</span></div>
+      <div class="blocks"><div class="blk h"></div><div class="blk"></div><div class="blk two"><span></span><span></span></div><div class="blk s"></div></div>
+     </div>
+     <div class="phone"><div class="notch"></div><div class="blk h"></div><div class="blk"></div><div class="blk s"></div><div class="blk s"></div></div>
+     <div class="meter"><div class="ch"><span>Hastighed</span><span class="n">98</span></div><div class="mbar"><b></b></div></div>
+    </div>
+   </div>
+
+   <!-- 05 FEEDBACK -->
+   <div class="pf-scene" data-s="4">
+    <div class="feedback">
+     <div class="browser">
+      <div class="bb"><i></i><i></i><i></i><span>dinvirksomhed.dk</span></div>
+      <div class="wf">
+       <div class="wf-nav"><b></b><span></span><span></span><span></span></div>
+       <div class="wf-hero"><div><em style="width:80%"></em><em style="width:60%"></em><em class="s" style="width:70%"></em><u></u></div><div class="img"></div></div>
+       <div class="wf-cols"><div></div><div></div><div></div></div>
+      </div>
+      <span class="pin p1">1</span><span class="pin p2">2</span>
+      <div class="note n1">“Gør overskriften større”</div>
+      <div class="note n2">“Skift billedet ud”</div>
+     </div>
+     <div class="chips"><span class="chip">Rettelse 2 / 2</span><span class="chip ok">Godkendt ✓</span></div>
+    </div>
+   </div>
+
+   <!-- 06 LANCERING -->
+   <div class="pf-scene" data-s="5">
+    <div class="launch">
+     <div class="browser">
+      <div class="bb"><i></i><i></i><i></i><span class="url">🔒 dinvirksomhed.dk</span><span class="live"><b></b>Live</span></div>
+      <div class="stats">
+       <div class="ch"><span>Besøgende</span><span>Sidste 30 dage</span></div>
+       <svg viewBox="0 0 400 120" preserveAspectRatio="none"><path class="area" d="M0 110 L40 104 L80 106 L120 92 L160 95 L200 78 L240 70 L280 60 L320 44 L360 36 L400 18 L400 120 L0 120Z"/><path class="line" d="M0 110 L40 104 L80 106 L120 92 L160 95 L200 78 L240 70 L280 60 L320 44 L360 36 L400 18"/></svg>
+       <div class="kpis"><div><b>+ Opkald</b><span>Klik på telefon</span></div><div><b>+ Mails</b><span>Henvendelser</span></div><div><b>Top 3</b><span>Lokal søgning</span></div></div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   <div class="side left"><small class="sl">Samtale</small><p class="sp">En uforpligtende snak om din forretning, dine kunder, og hvad siden skal kunne.</p></div>
+   <div class="side right"><small class="sr">Vi kigger på</small><ul class="sli"></ul></div>
+  </div>
  </div>
 </div></section>
 
@@ -236,7 +432,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
    <tr><th>Selv redigere</th><td>Ja, i platformens editor</td><td class="us">Ja, i WordPress, hvis du vil</td></tr>
    <tr><th>Hjælp</th><td>Hjælpecenter og support-chat</td><td class="us">Direkte kontakt til mig</td></tr>
    <tr><th>Ændringer</th><td>Du laver dem selv</td><td class="us">Selv, eller jeg gør det efter behov</td></tr>
-   <tr><th>Betaling</th><td>Fast månedligt abonnement</td><td class="us">Efter aftale og dit behov</td></tr>
+   <tr><th>Betaling</th><td>Fast månedligt abonnement, så længe siden skal være online</td><td class="us">Engangsbetaling for selve hjemmesiden. Ændringer betales efter behov, eller vi aftaler en fast ordning</td></tr>
   </tbody>
  </table>
  <p class="note">Wix er et varemærke tilhørende Wix.com Ltd. og nævnes kun som eksempel. Renacer er ikke tilknyttet Wix.</p>
@@ -245,7 +441,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 <section id="samarbejde"><div class="wrap">
  <div class="head">
   <div><div class="label"><i>●</i> Samarbejde</div><h2 style="margin-top:20px">Du bestemmer,<br>hvor meget du vil.</h2></div>
-  <p>Når siden er klar, vælger du, hvordan den skal passes. Du kan altid skifte senere.</p>
+  <p>Selve hjemmesiden betaler du én gang. Derefter vælger du, hvordan den skal passes: Du kan få ændringer efter behov, eller vi kan aftale en fast ordning, der passer til dig.</p>
  </div>
  <div class="models">
   <div class="model"><div class="label">01 · Selvstændig</div><h3>Du får nøglerne</h3><p>Jeg bygger siden og overdrager den til dig. Du ejer den og styrer den selv i WordPress.</p></div>
@@ -283,5 +479,40 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <a href="#top">Til toppen ↑</a>
 </div></footer>
 
+<script>
+(function(){
+ var S=[
+  {t:"Forstå din forretning.",l:"Samtale",p:"En uforpligtende snak om din forretning, dine kunder, og hvad siden skal kunne.",r:"Vi kigger på",li:["Din forretning","Dine kunder","Dine konkurrenter"]},
+  {t:"Planlægge siden.",l:"Struktur",p:"Jeg lægger sidens opbygning og indhold, så besøgende ledes hen mod at tage kontakt.",r:"Vi planlægger",li:["Sider og menu","Tekster og billeder","Vejen til kontakt"]},
+  {t:"Et første udkast.",l:"Design",p:"Du får et visuelt udkast med farver og fonte, før der bliver bygget noget.",r:"Du får",li:["Visuelt udkast","Farver og fonte","Mobilversion"]},
+  {t:"Bygget til at virke.",l:"Bygning",p:"Siden bygges i WordPress, så du selv kan rette den bagefter, hvis du vil.",r:"Bygget til",li:["Mobil og computer","Hurtig indlæsning","Google (SEO)"]},
+  {t:"Du retter, jeg finpudser.",l:"Feedback",p:"Du kommer med rettelser direkte på siden, og jeg retter til, indtil du er tilfreds.",r:"Sådan foregår det",li:["Dine kommentarer","Finpudsning","Din godkendelse"]},
+  {t:"Live, og passet på.",l:"Lancering",p:"Siden går live på dit domæne. Bagefter vælger du, om du selv passer den, eller om jeg gør.",r:"Det følger med",li:["Domæne og hosting","SSL-certifikat","Løbende support"]}
+ ];
+ var root=document.getElementById('pf');if(!root)return;
+ var tabs=[].slice.call(root.querySelectorAll('.pf-tab')),scenes=[].slice.call(root.querySelectorAll('.pf-scene'));
+ var title=root.querySelector('.pf-title'),sides=root.querySelectorAll('.side');
+ var sl=root.querySelector('.sl'),sp=root.querySelector('.sp'),sr=root.querySelector('.sr'),sli=root.querySelector('.sli');
+ var DUR=6000,cur=-1,timer=null,left=DUR,start=0,paused=false;
+ root.style.setProperty('--dur',DUR/1000+'s');
+ function go(i){
+  cur=(i+S.length)%S.length;var s=S[cur];
+  tabs.forEach(function(t,k){t.classList.toggle('on',k===cur);t.classList.toggle('done',k<cur);t.setAttribute('aria-selected',k===cur);
+   var b=t.querySelector('.bar b');b.style.animation='none';b.offsetWidth;b.style.animation='';});
+  scenes.forEach(function(sc,k){sc.classList.toggle('on',k===cur)});
+  title.classList.add('out');sides.forEach(function(e){e.classList.add('out')});
+  setTimeout(function(){title.textContent=s.t;sl.textContent=s.l;sp.textContent=s.p;sr.textContent=s.r;
+   sli.innerHTML=s.li.map(function(x){return '<li>'+x+'</li>'}).join('');
+   title.classList.remove('out');sides.forEach(function(e){e.classList.remove('out')});},220);
+  left=DUR;schedule();
+ }
+ function schedule(){clearTimeout(timer);if(paused)return;start=Date.now();timer=setTimeout(function(){go(cur+1)},left);}
+ tabs.forEach(function(t,k){t.addEventListener('click',function(){go(k)})});
+ root.addEventListener('mouseenter',function(){paused=true;root.classList.add('paused');clearTimeout(timer);left-=Date.now()-start;});
+ root.addEventListener('mouseleave',function(){paused=false;root.classList.remove('paused');schedule();});
+ if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){DUR=1e9;}
+ go(0);
+})();
+</script>
 </body>
 </html>
