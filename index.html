@@ -267,11 +267,15 @@ td.us:before{content:"✓";color:var(--acc);margin-right:10px}
 .ogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:90px;align-items:start}
 .offer h2 em{font-family:Italiana,serif;font-style:normal;font-weight:400;color:var(--acc)}
 .olead{color:#3b3a37;font-size:18px;max-width:480px;margin:24px 0 36px}
-.oform{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:40px;padding:6px;max-width:560px}
-.oform input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:15px;padding:12px 16px;color:var(--ink)}
-.oform input:focus{outline:none}
-.oform input+input{border-left:1px solid var(--line)}
-.oform button{flex:none;border:0;border-radius:30px;background:var(--ink);color:var(--bg);font:500 15px Inter,sans-serif;padding:14px 24px;cursor:pointer;transition:background .2s}
+.oform{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:580px}
+.oform label{display:block}
+.oform .full{grid-column:1/-1}
+.oform span{display:block;font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}
+.oform input{width:100%;font:inherit;font-size:15px;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);transition:border-color .2s}
+.oform input:focus{outline:none;border-color:var(--ink)}
+.oform input::placeholder{color:#b3afa7}
+.obtn{margin-top:6px}
+.oform button{border:0;border-radius:30px;background:var(--ink);color:var(--bg);font:500 15px Inter,sans-serif;padding:15px 30px;cursor:pointer;transition:background .2s}
 .oform button:hover{background:#2b2a27}
 .omsg{font-size:14px;color:var(--muted);margin-top:12px;min-height:20px}
 .omsg.err{color:#a3361f}
@@ -283,7 +287,7 @@ td.us:before{content:"✓";color:var(--acc);margin-right:10px}
 @media (max-width:900px){
  .bgrid,.ogrid{grid-template-columns:1fr}.ogrid{gap:50px}
  .bcard{padding:100px 26px 30px}.bi{left:26px;top:26px}
- .oform{flex-direction:column;border-radius:14px}.oform input+input{border-left:0;border-top:1px solid var(--line)}.oform button{width:100%}
+ .oform{grid-template-columns:1fr}.oform button{width:100%}
 }
 
 /* CONTACT */
@@ -346,7 +350,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 <div class="h1wrap"><h1>Din forretning, <em>genfødt.</em></h1>
  </div>
  <div class="row">
-  <p class="lede"><span class="pain">Dine kunder leder efter dig online, men finder dine konkurrenter.</span><strong>Jeg bygger en hjemmeside, der bliver fundet og får dem til at vælge dig.</strong></p>
+  <p class="lede"><span class="pain">Dine kunder leder efter dig online, men finder dine konkurrenter.</span><strong>Vi bygger en hjemmeside, der bliver fundet og får dem til at vælge dig.</strong></p>
   <div class="right"><a class="arrow" href="/prisestimat">Få et prisestimat</a></div>
  </div>
  <div class="reel">
@@ -488,13 +492,13 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 <section id="ydelser"><div class="wrap">
  <div class="head">
   <div><div class="label"><i>●</i> Ydelser</div><h2 style="margin-top:20px">Alt samlet ét sted.</h2></div>
-  <p>Ingen bureau, hostingfirma og IT-mand at jonglere med. Én person tager sig af det hele.</p>
+  <p>Ingen bureau, hostingfirma og IT-mand at jonglere med. Vi tager os af det hele.</p>
  </div>
  <div class="list">
   <div class="item"><span class="n">01</span><h3>Professionelle hjemmesider</h3><p>Skræddersyet design, hurtigt og mobilvenligt, bygget til at få besøgende til at ringe, skrive eller booke.</p></div>
   <div class="item"><span class="n">02</span><h3>Hosting</h3><p>Stabil og sikker drift med SSL-certifikat og backup. Du skal ikke tænke på servere.</p></div>
-  <div class="item"><span class="n">03</span><h3>Support</h3><p>Spørgsmål eller problemer går direkte til mig, ikke til et callcenter.</p></div>
-  <div class="item"><span class="n">04</span><h3>Løbende justering</h3><p>Nye priser, billeder eller tilbud. Jeg holder siden opdateret, så den bliver ved med at sælge.</p></div>
+  <div class="item"><span class="n">03</span><h3>Support</h3><p>Spørgsmål eller problemer går direkte til os, ikke til et callcenter.</p></div>
+  <div class="item"><span class="n">04</span><h3>Løbende justering</h3><p>Nye priser, billeder eller tilbud. Vi holder siden opdateret, så den bliver ved med at sælge.</p></div>
  </div>
 </div></section>
 
@@ -506,13 +510,13 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <table>
   <thead><tr><th></th><th>Wix og lignende</th><th class="us">Renacer</th></tr></thead>
   <tbody>
-   <tr><th>Hvem bygger siden</th><td>Du selv, ud fra en skabelon</td><td class="us">Jeg bygger den for dig</td></tr>
+   <tr><th>Hvem bygger siden</th><td>Du selv, ud fra en skabelon</td><td class="us">Vi bygger den for dig</td></tr>
    <tr><th>Design</th><td>Skabeloner, som mange andre også bruger</td><td class="us">Skræddersyet til din forretning</td></tr>
    <tr><th>Ejerskab</th><td>Du lejer siden, så længe du betaler</td><td class="us">Mulighed for, at du ejer siden</td></tr>
    <tr><th>Platform</th><td>Låst til platformens eget system</td><td class="us">WordPress, som kan flyttes</td></tr>
    <tr><th>Selv redigere</th><td>Ja, i platformens editor</td><td class="us">Ja, i WordPress, hvis du vil</td></tr>
-   <tr><th>Hjælp</th><td>Hjælpecenter og support-chat</td><td class="us">Direkte kontakt til mig</td></tr>
-   <tr><th>Ændringer</th><td>Du laver dem selv</td><td class="us">Selv, eller jeg gør det efter behov</td></tr>
+   <tr><th>Hjælp</th><td>Hjælpecenter og support-chat</td><td class="us">Direkte kontakt til os</td></tr>
+   <tr><th>Ændringer</th><td>Du laver dem selv</td><td class="us">Selv, eller vi gør det efter behov</td></tr>
    <tr><th>Betaling</th><td>Fast månedligt abonnement, så længe siden skal være online</td><td class="us">Engangsbetaling for selve hjemmesiden. Ændringer betales efter behov, eller vi aftaler en fast ordning</td></tr>
   </tbody>
  </table>
@@ -525,9 +529,9 @@ footer .wordmark{font-size:17px;color:var(--ink)}
   <p>Selve hjemmesiden betaler du én gang. Derefter vælger du, hvordan den skal passes: Du kan få ændringer efter behov, eller vi kan aftale en fast ordning, der passer til dig.</p>
  </div>
  <div class="models">
-  <div class="model"><div class="label">01 · Selvstændig</div><h3>Du får nøglerne</h3><p>Jeg bygger siden og overdrager den til dig. Du ejer den og styrer den selv i WordPress.</p></div>
-  <div class="model feat"><div class="label">02 · Fleksibel</div><h3>Selv, med backup</h3><p>Du klarer de små ting selv og skriver til mig, når der er noget større, der skal laves.</p></div>
-  <div class="model"><div class="label">03 · Fuld service</div><h3>Jeg klarer det hele</h3><p>Hosting, opdateringer, sikkerhed og løbende ændringer. Du fokuserer på din forretning.</p></div>
+  <div class="model"><div class="label">01 · Selvstændig</div><h3>Du får nøglerne</h3><p>Vi bygger siden og overdrager den til dig. Du ejer den og styrer den selv i WordPress.</p></div>
+  <div class="model feat"><div class="label">02 · Fleksibel</div><h3>Selv, med backup</h3><p>Du klarer de små ting selv og skriver til os, når der er noget større, der skal laves.</p></div>
+  <div class="model"><div class="label">03 · Fuld service</div><h3>Vi klarer det hele</h3><p>Hosting, opdateringer, sikkerhed og løbende ændringer. Du fokuserer på din forretning.</p></div>
  </div>
 </div></section>
 
@@ -536,24 +540,27 @@ footer .wordmark{font-size:17px;color:var(--ink)}
   <div>
    <div class="label"><i>●</i> Gratis og uforpligtende</div>
    <h2 style="margin-top:20px">Se din nye hjemmeside, <em>før du beslutter dig.</em></h2>
-   <p class="olead">Jeg laver et gratis designforslag til din forside, så du kan se, hvordan din forretning kunne tage sig ud online.</p>
+   <p class="olead">Vi laver et gratis designforslag til din forside, så du kan se, hvordan din forretning kunne tage sig ud online.</p>
    <form class="oform" id="oform" novalidate>
-    <input type="text" name="Navn" placeholder="Navn" autocomplete="name" aria-label="Navn">
-    <input type="email" name="E-mail" placeholder="E-mail" autocomplete="email" aria-label="E-mail">
-    <button type="submit">Få mit forslag</button>
+    <label><span>Navn *</span><input type="text" name="Navn" autocomplete="name"></label>
+    <label><span>E-mail *</span><input type="email" name="E-mail" autocomplete="email"></label>
+    <label><span>Virksomhed *</span><input type="text" name="Virksomhed" autocomplete="organization" placeholder="Fx Salon Lis"></label>
+    <label><span>Hvad laver I? *</span><input type="text" name="Branche" placeholder="Fx frisør i Aarhus"></label>
+    <label class="full"><span>Nuværende hjemmeside eller Facebook-side (valgfrit)</span><input type="text" name="Nuværende side" placeholder="Fx salonlis.dk"></label>
+    <div class="full obtn"><button type="submit">Få mit gratis forslag</button></div>
    </form>
    <p class="omsg" id="omsg" aria-live="polite"></p>
   </div>
   <ol class="osteps">
    <li><span>1</span><div><h3>En kort snak</h3><p>Vi tager en kort snak om din forretning, dine kunder, og hvad du kan lide.</p></div></li>
-   <li><span>2</span><div><h3>Dit designforslag</h3><p>Jeg designer et forslag til din forside. Det koster ikke noget, og du binder dig ikke til noget.</p></div></li>
+   <li><span>2</span><div><h3>Dit designforslag</h3><p>Vi designer et forslag til din forside. Det koster ikke noget, og du binder dig ikke til noget.</p></div></li>
    <li><span>3</span><div><h3>Du beslutter</h3><p>Kan du lide det, går vi i gang. Hvis ikke, har det ikke kostet dig andet end et par minutter.</p></div></li>
   </ol>
  </div>
 </div></section>
 
 <section class="about" id="om"><div class="wrap">
- <div><div class="label"><i>●</i> Om Renacer · Hvorfor mig?</div> <aside class="dict" style="margin-top:40px" aria-label="Hvad betyder renacer">
+ <div><div class="label"><i>●</i> Om Renacer · Hvorfor os?</div> <aside class="dict" style="margin-top:40px" aria-label="Hvad betyder renacer">
   <div class="word">renacer</div>
   <hr>
   <div class="def">
@@ -563,9 +570,9 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  </aside>
 </div>
  <div>
-  <h3 class="about-h">En person, ikke en platform.</h3>
-  <p>Navnet siger det hele. Jeg tager en forældet eller manglende hjemmeside og giver den nyt liv, så den arbejder for dig i stedet for imod dig.</p>
-  <p>Du får ikke en platform eller et callcenter. Du får én person, der kender din forretning.</p>
+  <h3 class="about-h">Mennesker, ikke en platform.</h3>
+  <p>Navnet siger det hele. Vi tager en forældet eller manglende hjemmeside og giver den nyt liv, så den arbejder for dig i stedet for imod dig.</p>
+  <p>Du får ikke en platform eller et callcenter. Du får en fast kontakt, der kender din forretning.</p>
   <div class="why">
    <div><b>Fokus på salg</b><span>Bygget til at skaffe kunder</span></div>
    <div><b>Du kan eje din side</b><span>Ikke noget du lejer</span></div>
@@ -577,7 +584,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 
 <section class="contact" id="kontakt"><div class="wrap">
  <div class="label"><i>●</i> Kontakt</div>
- <h2>Fortæl mig om din forretning.</h2>
+ <h2>Fortæl os om din forretning.</h2>
  <div class="cgrid">
   <form class="cform" id="cform" novalidate>
    <div class="row2">
@@ -585,7 +592,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
     <label><span>E-mail *</span><input type="email" name="E-mail" autocomplete="email" required></label>
    </div>
    <label><span>Telefon (valgfrit)</span><input type="tel" name="Telefon" autocomplete="tel"></label>
-   <label><span>Hvad kan jeg hjælpe med? *</span><textarea name="Besked" rows="4" placeholder="Skriv et par linjer om din forretning, eller stil et spørgsmål" required></textarea></label>
+   <label><span>Hvad kan vi hjælpe med? *</span><textarea name="Besked" rows="4" placeholder="Skriv et par linjer om din forretning, eller stil et spørgsmål" required></textarea></label>
    <div class="csend"><button type="submit" class="cbtn">Send besked</button><p class="cmsg" id="cmsg" aria-live="polite"></p></div>
   </form>
   <aside class="ways">
@@ -605,11 +612,11 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 (function(){
  var S=[
   {t:"Forstå din forretning.",l:"Samtale",p:"En uforpligtende snak om din forretning, dine kunder, og hvad siden skal kunne.",r:"Vi kigger på",li:["Din forretning","Dine kunder","Dine konkurrenter"]},
-  {t:"Planlægge siden.",l:"Struktur",p:"Jeg lægger sidens opbygning og indhold, så besøgende ledes hen mod at tage kontakt.",r:"Vi planlægger",li:["Sider og menu","Tekster og billeder","Vejen til kontakt"]},
+  {t:"Planlægge siden.",l:"Struktur",p:"Vi lægger sidens opbygning og indhold, så besøgende ledes hen mod at tage kontakt.",r:"Vi planlægger",li:["Sider og menu","Tekster og billeder","Vejen til kontakt"]},
   {t:"Et første design.",l:"Design",p:"Du ser, hvordan siden kommer til at se ud, med farver og fonte, før der bliver bygget noget.",r:"Du får",li:["Visuelt design","Farver og fonte","Mobilversion"]},
   {t:"Bygget til at virke.",l:"Bygning",p:"Siden bygges i WordPress, så du selv kan rette den bagefter, hvis du vil.",r:"Bygget til",li:["Mobil og computer","Hurtig indlæsning","Google (SEO)"]},
-  {t:"Du retter, jeg finpudser.",l:"Feedback",p:"Du kommer med rettelser direkte på siden, og jeg retter til, indtil du er tilfreds.",r:"Sådan foregår det",li:["Dine kommentarer","Finpudsning","Din godkendelse"]},
-  {t:"Live, og passet på.",l:"Lancering",p:"Siden går live på dit domæne. Bagefter vælger du, om du selv passer den, eller om jeg gør.",r:"Det følger med",li:["Domæne og hosting","SSL-certifikat","Løbende support"]}
+  {t:"Du retter, vi finpudser.",l:"Feedback",p:"Du kommer med rettelser direkte på siden, og vi retter til, indtil du er tilfreds.",r:"Sådan foregår det",li:["Dine kommentarer","Finpudsning","Din godkendelse"]},
+  {t:"Live, og passet på.",l:"Lancering",p:"Siden går live på dit domæne. Bagefter vælger du, om du selv passer den, eller om vi gør.",r:"Det følger med",li:["Domæne og hosting","SSL-certifikat","Løbende support"]}
  ];
  var root=document.getElementById('pf');if(!root)return;
  var tabs=[].slice.call(root.querySelectorAll('.pf-tab')),scenes=[].slice.call(root.querySelectorAll('.pf-scene'));
@@ -645,17 +652,21 @@ f.addEventListener('submit',function(e){e.preventDefault();msg.className='cmsg';
  if(!b){msg.className='cmsg err';msg.textContent='Skriv venligst en kort besked.';f.Besked.focus();return;}
  var body=b+'\n\n'+n+'\n'+m+(t?'\n'+t:'');
  window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Henvendelse fra '+n)+'&body='+encodeURIComponent(body);
- msg.textContent='Dit mailprogram åbner nu. Tryk send, så vender jeg tilbage.';
+ msg.textContent='Dit mailprogram åbner nu. Tryk send, så vender vi tilbage.';
 });})();
 </script>
 <script>
 (function(){var f=document.getElementById('oform');if(!f)return;var msg=document.getElementById('omsg');
 f.addEventListener('submit',function(e){e.preventDefault();msg.className='omsg';
- var n=f.Navn.value.trim(),m=f['E-mail'].value.trim();
- if(!n){msg.className='omsg err';msg.textContent='Skriv venligst dit navn.';f.Navn.focus();return;}
- if(!/^\S+@\S+\.\S+$/.test(m)){msg.className='omsg err';msg.textContent='Skriv venligst en gyldig e-mail.';f['E-mail'].focus();return;}
- window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Gratis designforslag: '+n)+'&body='+encodeURIComponent('Hej Renacer\n\nJeg vil gerne have et gratis designforslag til min hjemmeside.\n\n'+n+'\n'+m+'\n');
- msg.textContent='Dit mailprogram åbner nu. Tryk send, så kontakter jeg dig.';
+ var n=f.Navn.value.trim(),m=f['E-mail'].value.trim(),v=f.Virksomhed.value.trim(),br=f.Branche.value.trim(),s=f['Nuværende side'].value.trim();
+ function bad(t,el){msg.className='omsg err';msg.textContent=t;el.focus();}
+ if(!n)return bad('Skriv venligst dit navn.',f.Navn);
+ if(!/^\S+@\S+\.\S+$/.test(m))return bad('Skriv venligst en gyldig e-mail.',f['E-mail']);
+ if(!v)return bad('Skriv venligst navnet på din virksomhed.',f.Virksomhed);
+ if(!br)return bad('Skriv kort, hvad I laver.',f.Branche);
+ var body='Hej Renacer\n\nJeg vil gerne have et gratis designforslag til min hjemmeside.\n\nNavn: '+n+'\nE-mail: '+m+'\nVirksomhed: '+v+'\nHvad vi laver: '+br+(s?'\nNuværende side: '+s:'')+'\n';
+ window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Gratis designforslag: '+v)+'&body='+encodeURIComponent(body);
+ msg.textContent='Dit mailprogram åbner nu. Tryk send, så kontakter vi dig.';
 });})();
 </script>
 </body>
