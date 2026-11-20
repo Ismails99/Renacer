@@ -234,14 +234,31 @@ td.us:before{content:"✓";color:var(--acc);margin-right:10px}
 .note{font-size:12px;color:#9a968f;margin-top:22px}
 
 /* MODELS */
+.flow2{display:grid;grid-template-columns:1fr auto 1.6fr;align-items:center;gap:22px;margin-bottom:34px;padding:22px 26px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.flow2 .st{display:flex;gap:14px;align-items:baseline}
+.flow2 .st b{font-family:"Inter Tight",sans-serif;font-weight:500;color:var(--acc);font-size:13px;width:24px;height:24px;border:1px solid var(--acc);border-radius:50%;display:inline-grid;place-items:center;flex:none;align-self:center}
+.flow2 .st span{font-size:15px}.flow2 .st em{font-style:normal;color:var(--muted);font-size:13px;margin-left:6px}
+.flow2 .ar{width:60px;height:1px;background:var(--line);position:relative}
+.flow2 .ar:after{content:"";position:absolute;right:0;top:-3px;border:3.5px solid transparent;border-left:6px solid #bdb9b2;border-right:0}
 .models{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.model{border:1px solid var(--line);border-radius:10px;padding:34px 30px 38px;background:#fff}
-.model.feat{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.model .label{margin-bottom:60px}
-.model.feat .label{color:#8a867e}
-.model h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:30px;letter-spacing:-.02em;margin-bottom:12px}
-.model p{color:var(--muted);font-size:15px}
-.model.feat p{color:#aaa59c}
+.model{border:1px solid var(--line);border-radius:12px;padding:34px 30px 30px;background:#fff;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
+.model:hover{border-color:var(--ink);transform:translateY(-3px)}
+.model .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px}
+.model .num{font-family:"Italiana",serif;font-size:44px;line-height:1;color:var(--acc)}
+.model .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.model h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:30px;letter-spacing:-.02em;margin-bottom:10px}
+.model .for{color:var(--muted);font-size:15px;min-height:46px}
+.model .split{margin-top:26px;border-top:1px solid var(--line)}
+.model .grp{padding:18px 0;border-bottom:1px solid var(--line)}
+.model .grp h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:10px}
+.model ul{list-style:none;display:grid;gap:7px}
+.model li{font-size:14.5px;display:flex;gap:10px}
+.model .us li:before{content:"✓";color:var(--acc)}
+.model .you li:before{content:"–";color:#b3afa8}
+.model .go{margin-top:auto;padding-top:26px;font-size:14px;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.model .go:after{content:"→";transition:transform .3s}
+.model:hover .go:after{transform:translateX(4px)}
+.mfoot{margin-top:26px;font-size:14px;color:var(--muted)}
 
 /* ABOUT */
 .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px}
@@ -324,6 +341,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  h2,.statement h2{font-size:38px}.contact h2{font-size:50px}
  .step,.item{grid-template-columns:1fr;gap:12px}
  .models,.why{grid-template-columns:1fr}
+ .flow2{grid-template-columns:1fr;gap:12px}.flow2 .ar{width:1px;height:22px;margin-left:8px}.flow2 .ar:after{display:none}.model .for{min-height:0}
  section{padding:90px 0}.panel li a{font-size:44px}
  table{font-size:13.5px}th,td{padding:14px 10px 14px 0}
  footer .wrap{flex-direction:column;gap:10px}
@@ -418,11 +436,23 @@ footer .wordmark{font-size:17px;color:var(--ink)}
   <div><div class="label"><i>●</i> Samarbejde</div><h2 style="margin-top:20px">Du bestemmer,<br>hvor meget du vil.</h2></div>
   <p>Selve hjemmesiden betaler du én gang. Derefter vælger du, hvordan den skal passes: Du kan få ændringer efter behov, eller vi kan aftale en fast ordning, der passer til dig.</p>
  </div>
- <div class="models">
-  <div class="model"><div class="label">01 · Selvstændig</div><h3>Du får nøglerne</h3><p>Vi bygger siden og overdrager den til dig. Du ejer den og styrer den selv i WordPress.</p></div>
-  <div class="model feat"><div class="label">02 · Fleksibel</div><h3>Selv, med backup</h3><p>Du klarer de små ting selv og skriver til os, når der er noget større, der skal laves.</p></div>
-  <div class="model"><div class="label">03 · Fuld service</div><h3>Vi klarer det hele</h3><p>Hosting, opdateringer, sikkerhed og løbende ændringer. Du fokuserer på din forretning.</p></div>
+ <div class="flow2">
+  <div class="st"><b>1</b><span>Din hjemmeside<em>Engangsbetaling</em></span></div>
+  <div class="ar"></div>
+  <div class="st"><b>2</b><span>Bagefter vælger du, hvem der passer den<em>Tre muligheder herunder</em></span></div>
  </div>
+ <div class="models">
+  <a class="model" href="#kontakt"><div class="top"><span class="num">01</span><span class="tag">Selvstændig</span></div><h3>Du får nøglerne</h3><p class="for">Til dig, der gerne vil styre det hele selv.</p>
+   <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>Ændringer i tekst og billeder</li><li>Opdateringer i WordPress</li><li>Hosting og domæne</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Overdragelse af siden til dig</li></ul></div></div>
+   <span class="go">Det her passer til mig</span></a>
+  <a class="model" href="#kontakt"><div class="top"><span class="num">02</span><span class="tag">Fleksibel</span></div><h3>Selv, med backup</h3><p class="for">Til dig, der klarer det små, men vil have hjælp til det store.</p>
+   <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>Små ændringer i tekst og billeder</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Større ændringer, når du skriver</li><li>Du betaler kun for det, vi laver</li></ul></div></div>
+   <span class="go">Det her passer til mig</span></a>
+  <a class="model" href="#kontakt"><div class="top"><span class="num">03</span><span class="tag">Fuld service</span></div><h3>Vi klarer det hele</h3><p class="for">Til dig, der hellere vil bruge tiden på din forretning.</p>
+   <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>At skrive til os, når noget skal ændres</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Hosting og sikkerhed</li><li>Opdateringer og backup</li><li>Løbende ændringer i en fast ordning</li></ul></div></div>
+   <span class="go">Det her passer til mig</span></a>
+ </div>
+ <p class="mfoot">I tvivl? Vi finder den rigtige løsning sammen, og du kan altid skifte senere.</p>
 </div></section>
 
 <section id="proces"><div class="wrap">
