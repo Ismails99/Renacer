@@ -310,7 +310,7 @@ td.us:before{content:"✓";color:var(--acc);margin-right:10px}
 .oform button{border:0;border-radius:30px;background:var(--ink);color:var(--bg);font:500 15px Inter,sans-serif;padding:15px 30px;cursor:pointer;transition:background .2s}
 .oform button:hover{background:#2b2a27}
 .omsg{font-size:14px;color:var(--muted);margin-top:12px;min-height:20px}
-.omsg.err{color:#a3361f}
+.omsg.err{color:#a3361f}.omsg.ok,.cmsg.ok{color:var(--ink)}
 .osteps{list-style:none;border-top:1px solid #d9d6cf}
 .osteps li{display:grid;grid-template-columns:56px 1fr;gap:10px;padding:28px 0;border-bottom:1px solid #d9d6cf}
 .osteps span{font-family:Italiana,serif;font-size:40px;line-height:1;color:var(--acc)}
@@ -689,6 +689,12 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 })();
 </script>
 <script>
+function rsend(subject,data,mailBody,ok,fail){
+ var p={_subject:subject,_template:'table',_captcha:'false'};if(data['E-mail'])p._replyto=data['E-mail'];for(var k in data)p[k]=data[k];
+ fetch('https://formsubmit.co/ajax/kontakt@renacer.dk',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(p)})
+ .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true'))ok();else throw 0})
+ .catch(function(){fail();window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(mailBody);});
+}
 (function(){var f=document.getElementById('cform');if(!f)return;var msg=document.getElementById('cmsg');
 f.addEventListener('submit',function(e){e.preventDefault();msg.className='cmsg';
  var n=f.Navn.value.trim(),m=f['E-mail'].value.trim(),t=f.Telefon.value.trim(),b=f.Besked.value.trim();
@@ -696,8 +702,10 @@ f.addEventListener('submit',function(e){e.preventDefault();msg.className='cmsg';
  if(!/^\S+@\S+\.\S+$/.test(m)){msg.className='cmsg err';msg.textContent='Skriv venligst en gyldig e-mail.';f['E-mail'].focus();return;}
  if(!b){msg.className='cmsg err';msg.textContent='Skriv venligst en kort besked.';f.Besked.focus();return;}
  var body=b+'\n\n'+n+'\n'+m+(t?'\n'+t:'');
- window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Henvendelse fra '+n)+'&body='+encodeURIComponent(body);
- msg.textContent='Dit mailprogram åbner nu. Tryk send, så vender vi tilbage.';
+ var btn=f.querySelector('button');btn.disabled=true;msg.textContent='Sender…';
+ rsend('Henvendelse fra '+n,{'Navn':n,'E-mail':m,'Telefon':t||'-','Besked':b},body,
+  function(){f.reset();btn.disabled=false;msg.className='cmsg ok';msg.textContent='Tak! Din besked er sendt. Vi vender tilbage hurtigst muligt.';},
+  function(){btn.disabled=false;msg.textContent='Det lykkedes ikke at sende. Dit mailprogram åbner i stedet.';});
 });})();
 </script>
 <script>
@@ -710,8 +718,10 @@ f.addEventListener('submit',function(e){e.preventDefault();msg.className='omsg';
  if(!v)return bad('Skriv venligst navnet på din virksomhed.',f.Virksomhed);
  if(!br)return bad('Skriv kort, hvad I laver.',f.Branche);
  var body='Hej Renacer\n\nJeg vil gerne have et gratis designforslag til min hjemmeside.\n\nNavn: '+n+'\nE-mail: '+m+'\nVirksomhed: '+v+'\nHvad vi laver: '+br+(s?'\nNuværende side: '+s:'')+'\n';
- window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Gratis designforslag: '+v)+'&body='+encodeURIComponent(body);
- msg.textContent='Dit mailprogram åbner nu. Tryk send, så kontakter vi dig.';
+ var btn=f.querySelector('button');btn.disabled=true;msg.textContent='Sender…';
+ rsend('Gratis designforslag: '+v,{'Navn':n,'E-mail':m,'Virksomhed':v,'Hvad de laver':br,'Nuværende side':s||'-'},body,
+  function(){f.reset();btn.disabled=false;msg.className='omsg ok';msg.textContent='Tak! Vi har modtaget din forespørgsel og kontakter dig snarest.';},
+  function(){btn.disabled=false;msg.textContent='Det lykkedes ikke at sende. Dit mailprogram åbner i stedet.';});
 });})();
 </script>
 </body>

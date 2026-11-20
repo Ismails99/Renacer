@@ -175,8 +175,8 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
 
   <!-- done -->
   <section class="step done" data-name="Tak">
-   <h2 class="q">Tak, din forespørgsel <em>er klar.</em></h2>
-   <p>Dit mailprogram åbner med dine svar udfyldt. Tryk send, så vender vi tilbage med et prisestimat. Åbnede der ikke noget, kan du skrive direkte til <a href="mailto:kontakt@renacer.dk" style="border-bottom:1px solid var(--acc)">kontakt@renacer.dk</a>.</p>
+   <h2 class="q">Tak, din forespørgsel <em>er sendt.</em></h2>
+   <p id="donetxt">Vi har modtaget dine svar og vender tilbage med et prisestimat hurtigst muligt.</p>
    <dl class="summary" id="summary"></dl>
    <a class="btn" href="/">Tilbage til forsiden</a>
   </section>
@@ -191,6 +191,13 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
 <footer><div class="wrap"><span>© 2026 Renacer · renacer.dk</span><a href="mailto:kontakt@renacer.dk">kontakt@renacer.dk</a></div></footer>
 
 <script>
+function rsend(subject,data,mailBody,ok,fail){
+ var p={_subject:subject,_template:'table',_captcha:'false'};if(data['E-mail'])p._replyto=data['E-mail'];for(var k in data)p[k]=data[k];
+ fetch('https://formsubmit.co/ajax/kontakt@renacer.dk',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(p)})
+ .then(function(r){return r.json()}).then(function(j){if(j&&(j.success===true||j.success==='true'))ok();else throw 0})
+ .catch(function(){fail();window.location.href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(mailBody);});
+}
+
 (function(){
  var f=document.getElementById('f'),steps=[].slice.call(f.querySelectorAll('.step')),cur=0,LAST=5;
  var next=document.getElementById('next'),prev=document.getElementById('prev'),bar=document.getElementById('bar');
@@ -218,7 +225,7 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
   next.disabled=!answered(cur);
   if(cur===2)next.textContent=steps[2].querySelector('input:checked')?'Næste':'Spring over';
   // auto-advance on single-choice steps
-  if(e.target.type==='radio'&&cur!==0){setTimeout(function(){if(answered(cur))show(cur+1)},280);}
+  if(e.target.type==='radio'&&cur!==0){var at=cur;setTimeout(function(){if(cur===at&&at<LAST&&answered(cur))show(cur+1)},280);}
  });
  prev.addEventListener('click',function(){if(cur>0)show(cur-1)});
  next.addEventListener('click',function(){
@@ -243,8 +250,10 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
   var href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Prisestimat: '+who)+'&body='+encodeURIComponent('Hej Renacer\n\nJeg vil gerne have et prisestimat på en hjemmeside.\n\n'+body+'\n');
   var dl=document.getElementById('summary');
   dl.innerHTML=rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1].replace(/</g,'&lt;')+'</dd></div>'}).join('');
-  show(LAST+1);
-  window.location.href=href;
+  var data={};rows.forEach(function(r){data[r[0]]=r[1]});
+  var nb=document.getElementById('next');if(nb){nb.disabled=true;nb.textContent='Sender…';}
+  var subj='Prisestimat: '+who,mb='Hej Renacer\n\nJeg vil gerne have et prisestimat på en hjemmeside.\n\n'+body+'\n';
+  rsend(subj,data,mb,function(){show(LAST+1);},function(){document.getElementById('donetxt').textContent='Det lykkedes ikke at sende automatisk, så dit mailprogram åbner med dine svar. Tryk send, så vender vi tilbage.';show(LAST+1);});
  }
  show(0);
 })();
