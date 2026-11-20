@@ -21,7 +21,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Renacer", "url": "https://www.renacer.dk/", "email": "kontakt@renacer.dk", "image": "https://www.renacer.dk/assets/og-image.png", "logo": "https://www.renacer.dk/apple-touch-icon.png", "description": "Renacer designer og bygger hjemmesider til små virksomheder i Danmark, med hosting, support og løbende justering.", "areaServed": {"@type": "Country", "name": "Danmark"}, "inLanguage": "da", "knowsAbout": ["Webdesign", "Hjemmesider", "WordPress", "Hosting", "SEO"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Professionelle hjemmesider"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hosting"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Support"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Løbende justering"}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@400;900&family=Libre+Caslon+Text:wght@400;700&family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@900&family=Libre+Caslon+Text:wght@400;700&family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@900&family=Libre+Caslon+Text:wght@400;700&family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:wght@900&family=Libre+Caslon+Text:wght@400;700&family=Inter+Tight:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"></noscript>
 <style>
 :root{--bg:#fbfbfa;--soft:#f2f1ee;--ink:#121212;--muted:#6f6c67;--line:#e4e2dd;--acc:#a8854a}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -76,7 +79,7 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 .screen .bar span{margin-left:14px;font-size:11px;color:var(--muted);background:#fff;padding:2px 14px;border-radius:10px}
 .screen .in{padding:34px 40px;color:var(--ink)}
 .screen .in .wm{font-family:Italiana,serif;letter-spacing:.3em;font-size:13px}
-.screen .in h5{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:42px;letter-spacing:-.03em;line-height:1;margin:40px 0 18px;max-width:460px}
+.screen .in .h5{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:42px;letter-spacing:-.03em;line-height:1;margin:40px 0 18px;max-width:460px}
 .screen .in .ln{height:7px;background:var(--line);border-radius:4px;margin:8px 0;width:300px}
 .screen .in .ln.s{width:220px}
 .screen .in .btn{display:inline-block;margin-top:20px;background:var(--ink);color:var(--bg);font-size:11px;padding:8px 16px;border-radius:20px}
@@ -233,7 +236,7 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 /* SERVICES */
 .list{border-top:1px solid var(--line)}
 .item{display:grid;grid-template-columns:80px 1.1fr 1fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.item .n{font-size:13px;color:var(--acc);font-weight:500}
+.item .n{font-size:13px;color:#86672f;font-weight:500}
 .item h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:38px;letter-spacing:-.025em;line-height:1.05}
 .item p{color:var(--muted);font-size:15px}
 
@@ -291,7 +294,7 @@ td.us:before{content:"✓";color:var(--acc);margin-right:10px}
 .bi{position:absolute;left:36px;top:36px;width:54px;height:54px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--acc);transition:background .35s,color .35s,border-color .35s}
 .bi svg{width:26px;height:26px}
 .bcard:hover .bi{background:var(--ink);color:#e7cf9c;border-color:var(--ink)}
-.bn{position:absolute;right:30px;top:30px;font-size:12px;color:#b9b5ad;letter-spacing:.08em}
+.bn{position:absolute;right:30px;top:30px;font-size:12px;color:var(--muted);letter-spacing:.08em}
 .bcard h3{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:26px;letter-spacing:-.02em;margin-bottom:10px}
 .bcard p{color:var(--muted);font-size:15.5px;max-width:420px}
 /* OFFER */
@@ -389,7 +392,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <div class="reel">
   <div class="screen">
    <div class="bar"><b></b><b></b><b></b><span>dinvirksomhed.dk</span></div>
-   <div class="in"><div class="wm">DIN VIRKSOMHED</div><h5>Et nyt første indtryk.</h5><div class="ln"></div><div class="ln s"></div><span class="btn">Book tid</span></div>
+   <div class="in"><div class="wm">DIN VIRKSOMHED</div><div class="h5">Et nyt første indtryk.</div><div class="ln"></div><div class="ln s"></div><span class="btn">Book tid</span></div>
   </div>
  </div>
 </div></header>
@@ -459,13 +462,13 @@ footer .wordmark{font-size:17px;color:var(--ink)}
  <div class="models">
   <a class="model" href="#kontakt"><div class="top"><span class="num">01</span><span class="tag">Selvstændig</span></div><h3>Du får nøglerne</h3><p class="for">Til dig, der gerne vil styre det hele selv.</p>
    <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>Ændringer i tekst og billeder</li><li>Opdateringer i WordPress</li><li>Hosting og domæne</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Overdragelse af siden til dig</li></ul></div></div>
-   <span class="go">Det her passer til mig</span></a>
+   <span class="go">Vælg denne løsning</span></a>
   <a class="model" href="#kontakt"><div class="top"><span class="num">02</span><span class="tag">Fleksibel</span></div><h3>Selv, med backup</h3><p class="for">Til dig, der klarer det små, men vil have hjælp til det store.</p>
    <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>Små ændringer i tekst og billeder</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Større ændringer, når du skriver</li><li>Du betaler kun for det, vi laver</li></ul></div></div>
-   <span class="go">Det her passer til mig</span></a>
+   <span class="go">Vælg denne løsning</span></a>
   <a class="model" href="#kontakt"><div class="top"><span class="num">03</span><span class="tag">Fuld service</span></div><h3>Vi klarer det hele</h3><p class="for">Til dig, der hellere vil bruge tiden på din forretning.</p>
    <div class="split"><div class="grp you"><h4>Du står for</h4><ul><li>At skrive til os, når noget skal ændres</li></ul></div><div class="grp us"><h4>Vi står for</h4><ul><li>Design og bygning</li><li>Hosting og sikkerhed</li><li>Opdateringer og backup</li><li>Løbende ændringer i en fast ordning</li></ul></div></div>
-   <span class="go">Det her passer til mig</span></a>
+   <span class="go">Vælg denne løsning</span></a>
  </div>
  <p class="mfoot">I tvivl? Vi finder den rigtige løsning sammen, og du kan altid skifte senere.</p>
 </div></section>
@@ -592,7 +595,7 @@ footer .wordmark{font-size:17px;color:var(--ink)}
     <label><span>Virksomhed *</span><input type="text" name="Virksomhed" autocomplete="organization" placeholder="Fx Salon Lis"></label>
     <label><span>Hvad laver I? *</span><input type="text" name="Branche" placeholder="Fx frisør i Aarhus"></label>
     <label class="full"><span>Nuværende hjemmeside eller Facebook-side (valgfrit)</span><input type="text" name="Nuværende side" placeholder="Fx salonlis.dk"></label>
-    <div class="full obtn"><button type="submit">Få mit gratis forslag</button></div>
+    <div class="full obtn"><button type="submit">Få et gratis designforslag</button></div>
    </form>
    <p class="omsg" id="omsg" aria-live="polite"></p>
   </div>
@@ -717,7 +720,7 @@ f.addEventListener('submit',function(e){e.preventDefault();msg.className='omsg';
  if(!/^\S+@\S+\.\S+$/.test(m))return bad('Skriv venligst en gyldig e-mail.',f['E-mail']);
  if(!v)return bad('Skriv venligst navnet på din virksomhed.',f.Virksomhed);
  if(!br)return bad('Skriv kort, hvad I laver.',f.Branche);
- var body='Hej Renacer\n\nJeg vil gerne have et gratis designforslag til min hjemmeside.\n\nNavn: '+n+'\nE-mail: '+m+'\nVirksomhed: '+v+'\nHvad vi laver: '+br+(s?'\nNuværende side: '+s:'')+'\n';
+ var body='Hej Renacer\n\nForespørgsel om et gratis designforslag.\n\nNavn: '+n+'\nE-mail: '+m+'\nVirksomhed: '+v+'\nHvad vi laver: '+br+(s?'\nNuværende side: '+s:'')+'\n';
  var btn=f.querySelector('button');btn.disabled=true;msg.textContent='Sender…';
  rsend('Gratis designforslag: '+v,{'Navn':n,'E-mail':m,'Virksomhed':v,'Hvad de laver':br,'Nuværende side':s||'-'},body,
   function(){f.reset();btn.disabled=false;msg.className='omsg ok';msg.textContent='Tak! Vi har modtaget din forespørgsel og kontakter dig snarest.';},

@@ -20,7 +20,10 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap"></noscript>
 <style>
 :root{--bg:#fbfbfa;--soft:#f2f1ee;--ink:#121212;--muted:#6f6c67;--line:#e4e2dd;--acc:#a8854a}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,7 +36,7 @@ nav .wrap{max-width:1240px;display:flex;justify-content:space-between;align-item
 .back-home{font-size:14px;font-weight:500}
 main{flex:1;padding:60px 0 100px}
 .top{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
-.top b{color:var(--acc);font-weight:500}
+.top b{color:#86672f;font-weight:500}
 .progress{height:2px;background:var(--line);position:relative;margin-bottom:70px}
 .progress i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transition:width .45s ease}
 .step{display:none;animation:in .45s ease}
@@ -101,8 +104,8 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
    <h1 class="q">Hvad skal vi lave?</h1>
    <p class="hint">Svar på fem korte spørgsmål, så vender vi tilbage med et prisestimat. Det er gratis og uforpligtende.</p>
    <div class="opts">
-    <label class="opt"><input type="radio" name="Udgangspunkt" value="Ny hjemmeside"><span class="c"><i class="box"></i><span><b>En ny hjemmeside</b><span class="d">Jeg har ingen hjemmeside i dag</span></span></span></label>
-    <label class="opt"><input type="radio" name="Udgangspunkt" value="Forny nuværende hjemmeside"><span class="c"><i class="box"></i><span><b>Forny min hjemmeside</b><span class="d">Jeg har en side, men den trænger til et løft</span></span></span></label>
+    <label class="opt"><input type="radio" name="Udgangspunkt" value="Ny hjemmeside"><span class="c"><i class="box"></i><span><b>En ny hjemmeside</b><span class="d">Ingen hjemmeside i dag</span></span></span></label>
+    <label class="opt"><input type="radio" name="Udgangspunkt" value="Forny nuværende hjemmeside"><span class="c"><i class="box"></i><span><b>Forny en eksisterende hjemmeside</b><span class="d">Siden findes, men trænger til et løft</span></span></span></label>
    </div>
    <label class="field" id="urlField" hidden><span>Din nuværende hjemmeside (valgfrit)</span><input type="text" name="Nuværende side" placeholder="fx dinvirksomhed.dk"></label>
   </section>
@@ -141,10 +144,10 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
    <h2 class="q">Har du tekster og billeder?</h2>
    <p class="hint">Mange har ikke, og det er helt i orden.</p>
    <div class="opts">
-    <label class="opt"><input type="radio" name="Indhold" value="Har selv tekst og billeder"><span class="c"><i class="box"></i><span><b>Ja, jeg har det hele</b><span class="d">Jeg sender tekster og billeder</span></span></span></label>
-    <label class="opt"><input type="radio" name="Indhold" value="Har billeder, mangler tekster"><span class="c"><i class="box"></i><span><b>Jeg mangler tekster</b><span class="d">Jeg har billeder, men vil gerne have hjælp til teksterne</span></span></span></label>
-    <label class="opt"><input type="radio" name="Indhold" value="Har tekster, mangler billeder"><span class="c"><i class="box"></i><span><b>Jeg mangler billeder</b><span class="d">Teksterne er på plads</span></span></span></label>
-    <label class="opt"><input type="radio" name="Indhold" value="Mangler både tekst og billeder"><span class="c"><i class="box"></i><span><b>Jeg mangler begge dele</b><span class="d">Hjælp mig fra bunden</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Har selv tekst og billeder"><span class="c"><i class="box"></i><span><b>Tekster og billeder er klar</b><span class="d">Tekster og billeder sendes til jer</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Har billeder, mangler tekster"><span class="c"><i class="box"></i><span><b>Mangler tekster</b><span class="d">Billeder er klar, men teksterne skal skrives</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Har tekster, mangler billeder"><span class="c"><i class="box"></i><span><b>Mangler billeder</b><span class="d">Teksterne er på plads</span></span></span></label>
+    <label class="opt"><input type="radio" name="Indhold" value="Mangler både tekst og billeder"><span class="c"><i class="box"></i><span><b>Mangler begge dele</b><span class="d">Hjælp fra bunden</span></span></span></label>
    </div>
   </section>
 
@@ -153,9 +156,9 @@ footer .wrap{max-width:1240px;display:flex;justify-content:space-between}
    <h2 class="q">Hvem skal passe siden bagefter?</h2>
    <p class="hint">Du kan altid skifte senere.</p>
    <div class="opts three">
-    <label class="opt"><input type="radio" name="Efter lancering" value="Jeg passer den selv"><span class="c"><i class="box"></i><span><b>Jeg passer den selv</b><span class="d">Du får nøglerne og styrer den i WordPress</span></span></span></label>
-    <label class="opt"><input type="radio" name="Efter lancering" value="Ændringer efter behov"><span class="c"><i class="box"></i><span><b>Hjælp efter behov</b><span class="d">Jeg skriver, når der er noget</span></span></span></label>
-    <label class="opt"><input type="radio" name="Efter lancering" value="Fast ordning med hosting og support"><span class="c"><i class="box"></i><span><b>Klar det hele for mig</b><span class="d">Hosting, opdateringer og ændringer</span></span></span></label>
+    <label class="opt"><input type="radio" name="Efter lancering" value="Passer den selv"><span class="c"><i class="box"></i><span><b>Passer den selv</b><span class="d">Du får nøglerne og styrer den i WordPress</span></span></span></label>
+    <label class="opt"><input type="radio" name="Efter lancering" value="Ændringer efter behov"><span class="c"><i class="box"></i><span><b>Hjælp efter behov</b><span class="d">Skriver, når der er noget</span></span></span></label>
+    <label class="opt"><input type="radio" name="Efter lancering" value="Fast ordning med hosting og support"><span class="c"><i class="box"></i><span><b>I klarer det hele</b><span class="d">Hosting, opdateringer og ændringer</span></span></span></label>
    </div>
   </section>
 
@@ -247,12 +250,12 @@ function rsend(subject,data,mailBody,ok,fail){
  function send(){
   var rows=collect(),body=rows.map(function(r){return r[0]+': '+r[1]}).join('\n');
   var who=(f.querySelector('[name="Virksomhed"]').value.trim()||f.querySelector('[name="Navn"]').value.trim());
-  var href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Prisestimat: '+who)+'&body='+encodeURIComponent('Hej Renacer\n\nJeg vil gerne have et prisestimat på en hjemmeside.\n\n'+body+'\n');
+  var href='mailto:kontakt@renacer.dk?subject='+encodeURIComponent('Prisestimat: '+who)+'&body='+encodeURIComponent('Hej Renacer\n\nForespørgsel om et prisestimat på en hjemmeside.\n\n'+body+'\n');
   var dl=document.getElementById('summary');
   dl.innerHTML=rows.map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1].replace(/</g,'&lt;')+'</dd></div>'}).join('');
   var data={};rows.forEach(function(r){data[r[0]]=r[1]});
   var nb=document.getElementById('next');if(nb){nb.disabled=true;nb.textContent='Sender…';}
-  var subj='Prisestimat: '+who,mb='Hej Renacer\n\nJeg vil gerne have et prisestimat på en hjemmeside.\n\n'+body+'\n';
+  var subj='Prisestimat: '+who,mb='Hej Renacer\n\nForespørgsel om et prisestimat på en hjemmeside.\n\n'+body+'\n';
   rsend(subj,data,mb,function(){show(LAST+1);},function(){document.getElementById('donetxt').textContent='Det lykkedes ikke at sende automatisk, så dit mailprogram åbner med dine svar. Tryk send, så vender vi tilbage.';show(LAST+1);});
  }
  show(0);
