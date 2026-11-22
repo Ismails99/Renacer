@@ -222,6 +222,8 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:8
 .dict .def small{display:block;font:400 11px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .dict .pron{font-family:"Libre Caslon Text",Georgia,serif;font-weight:700;font-size:22px;color:#0d0b0b;display:flex;align-items:center;gap:8px;white-space:nowrap;padding-top:18px}
 .dict .pron i{font-style:normal;font-weight:300;font-family:Inter,sans-serif;font-size:40px;line-height:.8;transform:scaleX(.7)}
+.dict-sm{max-width:340px;margin-top:44px}.dict-sm .word{font-size:46px;padding-bottom:6px}.dict-sm .def{gap:16px;margin-top:12px}.dict-sm .def p{font-size:13.5px;max-width:230px}.dict-sm .def small{font-size:9.5px;margin-bottom:5px}.dict-sm .pron{font-size:15px;padding-top:12px;gap:5px}.dict-sm .pron i{font-size:26px}
+@media (max-width:900px){.dict-sm{margin-top:30px}.dict.dict-sm .def{grid-template-columns:1fr auto;gap:12px}.dict-sm .word{font-size:40px}}
 .about-h{font-family:"Inter Tight",sans-serif;font-weight:500;font-size:34px;letter-spacing:-.025em;line-height:1.1;margin:52px 0 22px}
 @media (max-width:900px){.dict .def{grid-template-columns:1fr;gap:10px}.about-h{margin-top:10px;font-size:28px}}
 
@@ -383,7 +385,15 @@ footer .wordmark{font-size:17px;color:var(--ink)}
 
 <header class="hero"><div class="wrap">
  <div class="meta"><span></span><span>Danmark, 2026</span></div>
-<div class="h1wrap"><h1 lang="en">Invisible to <em>unmissable.</em></h1>
+<div class="h1wrap"><h1>Din forretning, <em>genfødt.</em></h1>
+ <aside class="dict dict-sm" aria-label="Hvad betyder renacer">
+  <div class="word">renacer</div>
+  <hr>
+  <div class="def">
+   <p><small>Spansk · verbum</small>at blive genfødt; at rejse sig igen med nyt liv og ny styrke.</p>
+   <div class="pron"><i>[</i>re-na-sér<i>]</i></div>
+  </div>
+ </aside>
  </div>
  <div class="row">
   <p class="lede"><span class="pain">Dine kunder leder efter dig online, men finder dine konkurrenter.</span><strong>Vi bygger en hjemmeside, der bliver fundet og får dem til at vælge dig.</strong></p>
